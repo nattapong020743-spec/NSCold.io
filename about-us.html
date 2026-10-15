@@ -1,0 +1,1393 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>เกี่ยวกับเรา - บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด</title>
+    <!-- ไอคอนบนแท็บเบราว์เซอร์ -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/Logo.png') }}"
+    />
+    <meta name="keywords" content="บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด" />
+    <meta
+      name="description"
+      content="บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด บริการแช่แข็ง รับฝากเก็บ คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง โทรศัพท์: (+6674) 336-990-2"
+    />
+
+    <!-- โหลด Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- โหลดฟอนต์ Kanit จาก Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- โหลดไอคอนจาก FontAwesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      body {
+        font-family: "Kanit", sans-serif;
+        background-color: #ffffff;
+      }
+      .text-blue-custom {
+        color: #004d99;
+      }
+      .bg-blue-custom {
+        background-color: #005ce6;
+      }
+      .bg-blue-dark {
+        background-color: #003380;
+      }
+      .bg-red-custom {
+        background-color: #e62e2d;
+      }
+      .bg-green-custom {
+        background-color: #008000;
+      }
+
+      /* ========================================================
+         Desktop Navigation Styles (Royal Navy Command Bar)
+         ======================================================== */
+      @media (min-width: 769px) {
+        .desktop-Command-bar {
+          background: linear-gradient(
+            90deg,
+            #001f4d 0%,
+            #003380 50%,
+            #001f4d 100%
+          );
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 3px solid #005ce6;
+          box-shadow: 0 10px 25px -5px rgba(0, 26, 64, 0.35);
+        }
+
+        .nav-item {
+          padding: 10px 18px;
+          border-radius: 12px;
+          transition: all 0.25s ease;
+          color: #e2e8f0;
+          position: relative;
+          white-space: nowrap;
+          font-weight: 500;
+        }
+        .nav-item:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+          transform: translateY(-1px);
+        }
+
+        /* ปุ่มที่ Active บนแถบสีน้ำเงินเข้ม */
+        .nav-item.active-desktop {
+          background: linear-gradient(135deg, #0066ff 0%, #0044cc 100%);
+          color: #ffffff !important;
+          box-shadow:
+            0 4px 15px rgba(0, 102, 255, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* ลูกศรบนแถบเมนู Desktop */
+        .nav-caret-desktop {
+          color: #38bdf8 !important;
+          transition: transform 0.25s ease;
+        }
+        .group:hover > .nav-item .nav-caret-desktop {
+          transform: rotate(180deg);
+          color: #ffffff !important;
+        }
+
+        /* กล่อง Dropdown เมนูย่อย */
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          background-color: #ffffff;
+          min-width: 260px;
+          box-shadow:
+            0 25px 50px -12px rgba(0, 26, 64, 0.25),
+            0 0 0 1px rgba(0, 77, 153, 0.08);
+          z-index: 50;
+          top: calc(100% + 8px);
+          left: 0;
+          border-radius: 16px;
+          overflow: visible;
+          padding: 8px;
+          border-top: 4px solid #005ce6;
+          animation: dropdownSlide 0.2s ease-out forwards;
+        }
+        /* สะพานรับเมาส์ไม่ให้หลุด */
+        .dropdown-menu::before {
+          content: "";
+          position: absolute;
+          top: -12px;
+          left: 0;
+          width: 100%;
+          height: 12px;
+        }
+        .group:hover > .dropdown-menu {
+          display: block;
+        }
+
+        @keyframes dropdownSlide {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .dropdown-item {
+          color: #1e293b;
+          padding: 11px 16px;
+          text-decoration: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 10px;
+          font-size: 14px;
+          position: relative;
+          transition: all 0.2s ease;
+          margin-bottom: 2px;
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-item:hover {
+          background-color: #eff6ff;
+          color: #005ce6;
+          padding-left: 20px;
+          font-weight: 500;
+        }
+
+        .submenu {
+          display: none;
+          position: absolute;
+          background-color: #ffffff;
+          min-width: 230px;
+          box-shadow:
+            0 25px 50px -12px rgba(0, 26, 64, 0.25),
+            0 0 0 1px rgba(0, 77, 153, 0.08);
+          z-index: 60;
+          top: -4px;
+          left: calc(100% + 8px);
+          border-radius: 16px;
+          overflow: hidden;
+          padding: 8px;
+          border-top: 4px solid #38bdf8;
+          animation: dropdownSlide 0.2s ease-out forwards;
+        }
+        .submenu::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -10px;
+          width: 10px;
+          height: 100%;
+        }
+        .has-submenu:hover > .submenu {
+          display: block;
+        }
+      }
+
+      /* Custom Mobile Header Layout & Hamburger Menu */
+      @media (max-width: 768px) {
+        .mobile-header-grid {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          grid-template-areas:
+            "logo actions"
+            "title title";
+          gap: 12px;
+          align-items: center;
+        }
+        .header-logo {
+          grid-area: logo;
+          justify-self: start;
+        }
+        .header-actions {
+          grid-area: actions;
+          justify-self: end;
+        }
+        .header-title {
+          grid-area: title;
+          text-align: center;
+          margin-bottom: 8px;
+        }
+
+        #mobile-menu-container {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: white;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+          z-index: 100;
+          border-top: 1px solid #f1f5f9;
+        }
+        #mobile-menu-container.show {
+          display: flex;
+        }
+
+        .mobile-nav-ul {
+          flex-direction: column;
+          width: 100%;
+          padding: 0;
+        }
+        .mobile-nav-ul > li {
+          width: 100%;
+          border-bottom: 1px solid #f8fafc;
+        }
+        .nav-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 14px 20px;
+          font-size: 16px;
+          width: 100%;
+          border-radius: 0;
+          color: #1e293b;
+        }
+
+        .dropdown-menu {
+          display: none;
+          background-color: #f8fafc;
+          width: 100%;
+          position: static;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          flex-direction: column;
+        }
+        .dropdown-menu.show {
+          display: flex;
+        }
+        .dropdown-item {
+          padding: 12px 20px 12px 40px;
+          font-size: 15px;
+          border-bottom: 1px solid #e2e8f0;
+          color: #475569;
+          display: block;
+          width: 100%;
+          text-align: left;
+        }
+        .dropdown-item.has-submenu-link {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .submenu {
+          display: none;
+          background-color: #f1f5f9;
+          width: 100%;
+          position: static;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          flex-direction: column;
+        }
+        .submenu.show {
+          display: flex;
+        }
+        .submenu .dropdown-item {
+          padding-left: 60px;
+          font-size: 14px;
+        }
+
+        .mobile-toggle-icon {
+          transition: transform 0.3s;
+        }
+        .mobile-toggle-icon.rotate {
+          transform: rotate(180deg);
+        }
+      }
+
+      .content-card {
+        background-color: #ffffff;
+        border-radius: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        border: 1px solid #f1f5f9;
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+      .section-pill {
+        display: inline-block;
+        background-color: #005ce6;
+        color: #ffffff;
+        padding: 0.5rem 1.5rem;
+        border-radius: 9999px;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 4px rgba(0, 92, 230, 0.2);
+      }
+    </style>
+  </head>
+  <body class="text-gray-800 antialiased flex flex-col min-h-screen">
+    <!-- ========================================================
+         ส่วนหัวเว็บไซต์ (Header + Royal Navy Command Bar)
+         ======================================================== -->
+    <header class="bg-white pt-3 md:pt-4 shadow-sm z-50 relative sticky top-0">
+      <!-- แถบตกแต่งด้านบนสุด -->
+      <div
+        class="hidden md:block h-1.5 w-full bg-gradient-to-r from-[#002255] via-[#005ce6] to-[#e62e2d] absolute top-0 left-0"
+      ></div>
+
+      <div class="container mx-auto px-4 max-w-6xl md:pb-3">
+        <div
+          class="mobile-header-grid md:flex md:flex-row md:justify-between md:items-center relative min-h-[90px]"
+        >
+          <!-- 1. โลโก้กดกลับหน้าแรก -->
+          <div class="header-logo flex items-center space-x-2 md:static z-10">
+            <!-- ปุ่ม Hamburger จะแสดงเฉพาะจอมือถือ -->
+            <button
+              id="hamburger-btn"
+              class="md:hidden text-blue-custom text-2xl p-2 cursor-pointer focus:outline-none"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <a
+              href="{{ url_for('home') }}"
+              class="flex-shrink-0 cursor-pointer group flex items-center space-x-4"
+            >
+              <div
+                class="md:p-2 md:bg-slate-50 md:rounded-2xl md:border md:border-slate-200/80 md:shadow-sm group-hover:border-blue-300 transition-all"
+              >
+                <img
+                  src="{{ url_for('static', filename='images/Logo_NS.png') }}"
+                  alt="NS Cold Storage Logo"
+                  class="h-16 md:h-16 object-contain drop-shadow-sm"
+                />
+              </div>
+              <!-- แถบข้อความเล็กๆ ข้างโลโก้เฉพาะจอคอม -->
+              <div
+                class="hidden lg:flex flex-col border-l-2 border-slate-200 pl-4 py-1"
+              >
+                <span
+                  class="text-[11px] font-semibold uppercase tracking-widest text-blue-600"
+                  >Cold Chain Logistics</span
+                >
+                <span class="text-xs text-slate-400 font-light"
+                  >Songkhla, Thailand</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- 2. ชื่อบริษัทตรงกลาง -->
+          <div
+            class="header-title flex-grow flex flex-col justify-center items-center w-full md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2"
+          >
+            <h1
+              class="text-lg sm:text-xl md:text-[26px] font-semibold text-[#003380] mb-0.5 md:mb-1 tracking-tight"
+              data-i18n="companyNameTH"
+            >
+              บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+            </h1>
+            <div class="flex items-center space-x-2">
+              <span
+                class="hidden md:inline-block w-6 h-[1px] bg-blue-300"
+              ></span>
+              <h2
+                class="text-sm md:text-[15px] text-slate-500 font-medium tracking-widest uppercase"
+                data-i18n="companyNameEN"
+              >
+                NS COLD STORAGE CO.,LTD.
+              </h2>
+              <span
+                class="hidden md:inline-block w-6 h-[1px] bg-blue-300"
+              ></span>
+            </div>
+          </div>
+
+          <!-- 3. ปุ่มสลับภาษา & ติดต่อด่วน -->
+          <div
+            class="header-actions flex items-center space-x-3 md:space-x-4 md:static z-10"
+          >
+            <div
+              class="flex items-center bg-slate-100 border border-slate-200 rounded-full p-1 shadow-inner text-sm font-medium"
+            >
+              <button
+                id="btn-th-desktop"
+                onclick="setLanguage('th')"
+                class="px-4 py-1.5 md:px-3.5 md:py-1 rounded-full bg-blue-custom text-white shadow-sm transition-colors cursor-pointer"
+              >
+                TH
+              </button>
+              <button
+                id="btn-en-desktop"
+                onclick="setLanguage('en')"
+                class="px-4 py-1.5 md:px-3.5 md:py-1 rounded-full text-gray-500 hover:text-blue-custom transition-colors cursor-pointer"
+              >
+                EN
+              </button>
+            </div>
+
+            <!-- ปุ่มติดต่อด่วน -->
+            <a
+              href="{{ url_for('contact_us') }}"
+              class="bg-gradient-to-br from-[#ff3b3a] to-[#c81e1d] text-white text-center py-2 px-4 md:px-5 rounded-2xl flex flex-col md:flex-row justify-center items-center h-16 w-20 md:h-14 md:w-auto md:space-x-3 hover:from-red-600 hover:to-red-800 cursor-pointer transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-red-400/30"
+            >
+              <div
+                class="hidden md:flex w-9 h-9 rounded-xl bg-white/15 items-center justify-center"
+              >
+                <i class="fas fa-phone-volume text-white animate-pulse"></i>
+              </div>
+              <div class="flex flex-col md:text-left">
+                <span
+                  class="text-[10px] md:text-[11px] leading-tight mb-0.5 md:mb-0 font-light text-red-100"
+                  data-i18n="quickContact"
+                  >ติดต่อด่วน</span
+                >
+                <span
+                  class="text-[11px] md:text-[13px] font-semibold leading-tight tracking-wide"
+                  >Quick<br class="md:hidden" />
+                  Contacts</span
+                >
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Bar (แถบเมนูสีน้ำเงินเข้ม Royal Navy บนจอคอม) -->
+      <nav
+        id="mobile-menu-container"
+        class="md:block desktop-Command-bar md:py-2.5"
+      >
+        <!-- เมนูสลับภาษาบนมือถือ -->
+        <div
+          class="px-4 py-3 sm:hidden flex justify-center bg-slate-50 border-b border-slate-100"
+        >
+          <div
+            class="flex items-center bg-white rounded-full p-1 shadow-inner border border-slate-200 w-full max-w-[200px] justify-center"
+          >
+            <button
+              id="btn-th-mobile"
+              onclick="setLanguage('th')"
+              class="w-1/2 px-4 py-1.5 rounded-full bg-blue-custom text-white font-semibold shadow-sm text-sm"
+            >
+              TH
+            </button>
+            <button
+              id="btn-en-mobile"
+              onclick="setLanguage('en')"
+              class="w-1/2 px-4 py-1.5 rounded-full text-slate-500 font-medium text-sm"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+
+        <div class="container mx-auto px-0 md:px-4 max-w-6xl">
+          <ul
+            class="mobile-nav-ul md:flex md:flex-wrap md:justify-center md:items-center md:space-x-1 lg:space-x-2 text-sm md:text-[15px] font-medium"
+          >
+            <li>
+              <a
+                href="{{ url_for('home') }}"
+                class="nav-item block"
+                data-i18n="navHome"
+                >หน้าแรก</a
+              >
+            </li>
+
+            <!-- เมนู บริการของเรา -->
+            <li class="relative group">
+              <a
+                href="#"
+                class="nav-item flex items-center justify-between md:justify-start"
+                onclick="toggleMobileMenu(event, 'servicesMenu', this)"
+              >
+                <span data-i18n="navServices">บริการของเรา</span>
+                <i
+                  class="fas fa-caret-down ml-1.5 text-blue-custom text-xs mobile-toggle-icon nav-caret-desktop"
+                ></i>
+              </a>
+              <div id="servicesMenu" class="dropdown-menu">
+                <a
+                  href="{{ url_for('services') }}"
+                  class="dropdown-item"
+                  data-i18n="navServices"
+                  >บริการของเรา</a
+                >
+                <a
+                  href="{{ url_for('service_freeze') }}"
+                  class="dropdown-item"
+                  data-i18n="srvFreeze"
+                  >บริการฟรีส (Freeze)</a
+                >
+
+                <div class="relative has-submenu">
+                  <a
+                    href="#"
+                    class="dropdown-item has-submenu-link"
+                    onclick="toggleMobileMenu(event, 'storageMenu', this)"
+                  >
+                    <span data-i18n="srvStorage">บริการรับฝากเก็บสินค้า</span>
+                    <i
+                      class="fas fa-caret-right text-blue-custom text-xs ml-2 md:block hidden"
+                    ></i>
+                    <i
+                      class="fas fa-caret-down text-blue-custom text-xs ml-2 md:hidden mobile-toggle-icon"
+                    ></i>
+                  </a>
+                  <div id="storageMenu" class="submenu">
+                    <a
+                      href="{{ url_for('service_finished_goods') }}"
+                      class="dropdown-item"
+                      data-i18n="subFinishedGoods"
+                      >สินค้าสำเร็จรูป</a
+                    >
+                    <a
+                      href="{{ url_for('service_raw_materials') }}"
+                      class="dropdown-item"
+                      data-i18n="subRawMaterials"
+                      >สินค้าวัตถุดิบแช่แข็ง</a
+                    >
+                  </div>
+                </div>
+
+                <a
+                  href="{{ url_for('services') }}"
+                  class="dropdown-item"
+                  data-i18n="srvSorting"
+                  >บริการคัดขนาดปลาทูน่า</a
+                >
+
+                <div class="relative has-submenu">
+                  <a
+                    href="#"
+                    class="dropdown-item has-submenu-link"
+                    onclick="toggleMobileMenu(event, 'deliveryMenu', this)"
+                  >
+                    <span data-i18n="navDelivery">บริการส่งมอบสินค้า</span>
+                    <i
+                      class="fas fa-caret-right text-blue-custom text-xs ml-2 md:block hidden"
+                    ></i>
+                    <i
+                      class="fas fa-caret-down text-blue-custom text-xs ml-2 md:hidden mobile-toggle-icon"
+                    ></i>
+                  </a>
+                  <div id="deliveryMenu" class="submenu">
+                    <a
+                      href="{{ url_for('delivery_finished_goods') }}"
+                      class="dropdown-item"
+                      data-i18n="subFinishedGoods"
+                      >สินค้าสำเร็จรูป</a
+                    >
+                    <a
+                      href="{{ url_for('delivery_raw_materials') }}"
+                      class="dropdown-item"
+                      data-i18n="subRawMaterials"
+                      >สินค้าวัตถุดิบแช่แข็ง</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- เมนู เกี่ยวกับเรา พร้อมดรอปดาวน์ -->
+            <li class="relative group">
+              <!-- ตั้งค่า Active ให้ปุ่มนี้ เพราะเป็นหน้า About Us -->
+              <a
+                href="#"
+                class="nav-item active-desktop flex items-center justify-between md:justify-start"
+                onclick="toggleMobileMenu(event, 'aboutMenu', this)"
+              >
+                <span data-i18n="navAbout">เกี่ยวกับเรา</span>
+                <i
+                  class="fas fa-caret-down ml-1.5 text-blue-custom text-xs mobile-toggle-icon nav-caret-desktop"
+                ></i>
+              </a>
+              <div id="aboutMenu" class="dropdown-menu">
+                <a
+                  href="{{ url_for('about_us') }}"
+                  class="dropdown-item font-medium text-blue-600 bg-blue-50 md:bg-transparent"
+                  data-i18n="navAbout"
+                  >เกี่ยวกับเรา</a
+                >
+                <a
+                  href="{{ url_for('scenery') }}"
+                  class="dropdown-item"
+                  data-i18n="aboutScenery"
+                  >ทัศนียภาพ</a
+                >
+                <a
+                  href="{{ url_for('sustainability') }}"
+                  class="dropdown-item"
+                  data-i18n="aboutSustainability"
+                  >การพัฒนาที่ยั่งยืน</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="{{ url_for('careers') }}"
+                class="nav-item block"
+                data-i18n="navCareers"
+                >ร่วมงานกับเรา</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('contact_us') }}"
+                class="nav-item block"
+                data-i18n="navContact"
+                >ติดต่อเรา</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-item block" data-i18n="navActivities"
+                >กิจกรรม</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('fanpage') }}"
+                target="_blank"
+                class="nav-item block"
+                >Fanpage</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('privacy_policy') }}"
+                class="nav-item block"
+                data-i18n="navPrivacy"
+                >นโยบายการคุ้มครองข้อมูลส่วนบุคคล</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content: เนื้อหาหลักของหน้า About Us -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow">
+      <div class="text-center mb-8">
+        <h1
+          class="text-2xl md:text-3xl font-bold text-blue-700"
+          data-i18n="navAbout"
+        >
+          เกี่ยวกับเรา
+        </h1>
+        <div class="h-1 w-20 bg-red-500 mx-auto mt-3 rounded-full"></div>
+      </div>
+
+      <!-- Section 1: ข้อมูลการจดทะเบียนและผู้เปิดดำเนินกิจการ -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec1Title">
+            ข้อมูลการจดทะเบียนและผู้เปิดการดำเนินกิจการ
+          </div>
+        </div>
+
+        <div class="flex justify-center mb-6">
+          <img
+            src="{{ url_for('static', filename='images/คุณมานะ_ศรีพิทักษ์.png') }}"
+            alt="คุณมานะ ศรีพิทักษ์"
+            class="max-w-[280px] w-full rounded-2xl shadow-md border-4 border-white object-contain"
+          />
+        </div>
+
+        <div
+          class="max-w-xl mx-auto bg-gray-50 p-5 rounded-2xl border border-gray-100 text-gray-700 space-y-3 text-sm md:text-base"
+        >
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <span class="font-medium sm:w-1/2" data-i18n="sec1FounderLabel"
+              >ผู้เปิดดำเนินกิจการ :</span
+            >
+            <span class="sm:w-1/2" data-i18n="sec1FounderVal"
+              >คุณมานะ ศรีพิทักษ์ (กรรมการผู้จัดการ)</span
+            >
+          </div>
+          <div class="w-full h-px bg-gray-200"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <span class="font-medium sm:w-1/2" data-i18n="sec1DateLabel"
+              >วันที่เริ่มเปิดดำเนินกิจการ :</span
+            >
+            <span class="sm:w-1/2" data-i18n="sec1DateVal"
+              >1 กรกฎาคม พ.ศ. 2548</span
+            >
+          </div>
+          <div class="w-full h-px bg-gray-200"></div>
+          <div class="flex flex-col sm:flex-row sm:items-center">
+            <span class="font-medium sm:w-1/2" data-i18n="sec1CapLabel"
+              >ทุนจดทะเบียนบริษัท :</span
+            >
+            <span class="sm:w-1/2" data-i18n="sec1CapVal">160 ล้านบาท</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: รายชื่อคณะกรรมการผู้จัดการ -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec2Title">
+            คณะกรรมการผู้จัดการ
+          </div>
+        </div>
+        <div
+          class="max-w-xl mx-auto pl-4 text-gray-700 space-y-2 text-sm md:text-base"
+        >
+          <p data-i18n="sec2Item1">1). คุณมานะ ศรีพิทักษ์</p>
+          <p data-i18n="sec2Item2">2). คุณสุมนา ศรีพิทักษ์</p>
+          <p data-i18n="sec2Item3">3). คุณณัฐวิชศ ศรีพิทักษ์</p>
+        </div>
+      </div>
+
+      <!-- Section 3: ที่ตั้งบริษัท จำนวนพนักงาน และระดับการบริหาร -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec3Title">
+            ตำแหน่งที่ตั้งสำนักงานและโรงงานจำนวนพนักงานและระดับการบริหาร
+          </div>
+        </div>
+        <div
+          class="max-w-2xl mx-auto text-gray-700 space-y-4 text-sm md:text-base pl-2"
+        >
+          <div class="flex flex-col sm:flex-row">
+            <span
+              class="font-medium sm:w-1/3 mb-1 sm:mb-0"
+              data-i18n="sec3AddrLabel"
+              >ที่ตั้งบริษัท :</span
+            >
+            <span class="sm:w-2/3" data-i18n="sec3AddrVal"
+              >เลขที่ 150/2 หมู่ 3<br />ตำบลเขารูปช้าง อำเภอเมือง จังหวัดสงขลา
+              90000</span
+            >
+          </div>
+          <div class="flex flex-col sm:flex-row">
+            <span
+              class="font-medium sm:w-1/3 mb-1 sm:mb-0"
+              data-i18n="sec3EmpLabel"
+              >จำนวนพนักงาน :</span
+            >
+            <span class="sm:w-2/3" data-i18n="sec3EmpVal">132 คน</span>
+          </div>
+          <div class="flex flex-col sm:flex-row">
+            <span
+              class="font-medium sm:w-1/3 mb-1 sm:mb-0"
+              data-i18n="sec3LevelLabel"
+              >ระดับการบริหาร 5 ระดับ :</span
+            >
+            <span class="sm:w-2/3 space-y-1">
+              <p data-i18n="sec3L1">1). ผู้บริหารระดับสูงสุด</p>
+              <p data-i18n="sec3L2">2). ระดับฝ่าย</p>
+              <p data-i18n="sec3L3">3). ระดับแผนก</p>
+              <p data-i18n="sec3L4">4). ระดับหน่วย</p>
+              <p data-i18n="sec3L5">5). ระดับคนงาน</p>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: บริการหลักและประเภทสินค้าที่ให้บริการ -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec4Title">
+            บริการโดยรวมของบริษัท
+          </div>
+        </div>
+        <div class="text-gray-700 space-y-6 text-sm md:text-base pl-2">
+          <div>
+            <p class="font-medium mb-2 text-blue-700" data-i18n="sec4Sub1Title">
+              บริษัทมีบริการหลักๆ 5 บริการ ดังนี้
+            </p>
+            <ul class="space-y-1.5 pl-4">
+              <li data-i18n="sec4S1">
+                1). บริการฟรีส(Freeze)หรือบริการแช่เยือกแข็ง
+              </li>
+              <li data-i18n="sec4S2">2). บริการฝากเก็บสินค้าในห้องเย็น</li>
+              <li data-i18n="sec4S3">3). บริการคัดขนาดปลาทูน่า</li>
+              <li data-i18n="sec4S4">
+                4). บริการส่งมอบสินค้า โดยแยกย่อยตามประเภทสินค้าดังนี้
+                <ul class="pl-6 mt-1 text-gray-600 space-y-1">
+                  <li data-i18n="sec4S4_1">4.1). สินค้าสำเร็จรูป</li>
+                  <li data-i18n="sec4S4_2">4.2). สินค้าวัตถุดิบแช่แข็ง</li>
+                </ul>
+              </li>
+              <li data-i18n="sec4S5">5). บริการให้เช่ารถขนส่งสินค้า</li>
+            </ul>
+          </div>
+
+          <div>
+            <p class="font-medium mb-2 text-blue-700" data-i18n="sec4Sub2Title">
+              ประเภทของสินค้าที่อยู่ในเงื่อนไขของการบริการ
+            </p>
+            <ul class="space-y-1.5 pl-4">
+              <li data-i18n="sec4G1">1). อาหารทะเลแปรรูปแช่แข็ง</li>
+              <li data-i18n="sec4G2">2). สินค้าปศุสัตว์แช่แข็ง</li>
+              <li data-i18n="sec4G3">
+                3).
+                อื่นๆตามความต้องการของผู้ฝากและข้อตกลงที่ลูกค้าตกลงกับทางบริษัท
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: เป้าหมายและภารกิจของบริษัท -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec5Title">
+            เป้าหมายและภารกิจ
+          </div>
+        </div>
+        <p
+          class="text-gray-700 text-sm md:text-base leading-relaxed md:leading-loose text-justify px-2"
+          data-i18n="sec5Desc"
+        >
+          บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+          มีความมุ่งมั่นในการพัฒนาเพื่อเป็นผู้นำในการให้บริการแช่แข็ง รับฝากเก็บ
+          ฟรีส คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง อาหารทะเลแปรรูปแช่แข็ง
+          สินค้าปศุสัตว์แช่แข็ง ด้วยการนำเทคโนโลยีที่ทันสมัย
+          และระบบการจัดการคลังสินค้าที่มีคุณภาพ
+          การให้ข้อมูลการบริการที่รวดเร็วตลอดจนให้ความสำคัญกับ ความปลอดภัย
+          อาชีวอนามัยและสภาพแวดล้อมของพนักงาน และลูกค้า
+          และให้ความสำคัญด้านพลังงาน
+          เพื่อลดผลกระทบในด้านสิ่งแวดล้อมและลดการใช้ทรัพยากรธรรมชาติอย่างยั่งยืน
+        </p>
+      </div>
+
+      <!-- Section 6: มาตรฐานและใบรับรองที่บริษัทได้รับ -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec6Title">
+            มาตรฐานที่บริษัทได้รับการรับรอง
+          </div>
+        </div>
+
+        <div
+          class="flex flex-col md:flex-row justify-center items-center gap-2 md:gap-0 mb-8 mt-4 max-w-4xl mx-auto"
+        >
+          <img
+            src="{{ url_for('static', filename='images/ISO_HACCP_GMP.png') }}"
+            alt="ISO HACCP GMP Certificates"
+            class="w-full md:w-[70%] h-auto object-contain"
+          />
+          <img
+            src="{{ url_for('static', filename='images/MSCASC.jpg') }}"
+            alt="MSC and ASC Certificates"
+            class="w-[60%] md:w-[24%] h-auto object-contain mix-blend-multiply"
+          />
+        </div>
+
+        <ul
+          class="list-disc pl-6 space-y-3 text-gray-700 text-sm md:text-base marker:text-blue-500"
+        >
+          <li data-i18n="sec6Cert1">
+            <span class="font-medium text-gray-800">ISO9001 : 2015</span>
+            ได้รับการรับรองระบบบริหารงานคุณภาพตามมาตรฐาน โดยสถาบันรับรองมาตรฐาน
+            ISO
+          </li>
+          <li data-i18n="sec6Cert2">
+            <span class="font-medium text-gray-800">ISO22000 : 2005</span>
+            ได้รับการรับรองระบบการจัดการความปลอดภัยของอาหารตามมาตรฐาน
+            โดยสถาบันรับรองมาตรฐาน ISO
+          </li>
+          <li data-i18n="sec6Cert3">
+            <span class="font-medium text-gray-800">HACCP</span>
+            ได้รับการรับรองระบบการจัดการสุขลักษณะที่ดีในสถานประกอบการ
+            และระบบการวิเคราะห์อันตรายและจุดวิกฤตที่ต้องควบคุม โดย
+            สถาบันรับรองมาตรฐาน ISO
+          </li>
+          <li data-i18n="sec6Cert4">
+            <span class="font-medium text-gray-800">GMP</span>
+            การรับรองสุขลักษณะของสถานที่ประกอบการตามมาตรฐานของกรมประมง
+            กระทรวงเกษตรและสหกรณ์
+          </li>
+          <li data-i18n="sec6Cert5">
+            <span class="font-medium text-gray-800">GMP</span>
+            การรับรองสุขลักษณะของสถานที่ประกอบการตามมาตรฐานของกรมปศุสัตว์
+            กระทรวงเกษตรและสหกรณ์ (EST. 308)
+          </li>
+          <li data-i18n="sec6Cert6">
+            <span class="font-medium text-gray-800">MSC & ASC</span>
+            มาตรฐานการรับรองความยั่งยืนของอาหารทะเลและสัตว์น้ำระดับสากล
+          </li>
+          <li data-i18n="sec6Cert7">
+            ได้ผ่านการตรวจรับรองสถานที่พักซากสัตว์น้ำ กรมประมง
+            กระทรวงเกษตรและสหกรณ์ (ต.ร.ซ.น.6)
+          </li>
+          <li data-i18n="sec6Cert8">
+            ได้ผ่านการตรวจรับรองที่พักซากสัตว์ สำหรับการบริโภคเพื่อการ
+            นำเข้าในราชอาณาจักร นำออกนอกราชอาณาจักร เคลื่อนย้ายภายในราชอาณาจักร
+            กรมปศุสัตว์ กระทรวงเกษตรและสหกรณ์ (ต.ร.ซ.4)
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 7: พันธกิจของบริษัท -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec7Title">
+            พันธกิจ
+          </div>
+        </div>
+        <p
+          class="text-gray-700 text-sm md:text-base leading-relaxed md:leading-loose text-justify px-2"
+          data-i18n="sec7Desc"
+        >
+          ถือเป็นภารกิจของพนักงาน บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+          ทุกคนที่จะต้องร่วมกันปรับปรุงพัฒนาให้บริษัทฯ
+          สามารถเป็นผู้ให้บริการรับฝากสินค้าแช่แข็งที่มีคุณภาพ
+          มีประสิทธิภาพและความปลอดภัย
+          และสามารถสร้างความพึงพอใจอย่างสูงสุดและต่อเนื่องต่อผู้มาใช้บริการ
+          และเพื่อสร้างชื่อเสียงให้บริษัทฯเป็นที่ยอมรับของลูกค้าระดับประเทศ
+        </p>
+      </div>
+
+      <!-- Section 8: วิสัยทัศน์และนโยบายของบริษัท -->
+      <div class="content-card">
+        <div class="text-center">
+          <div class="section-pill text-base md:text-lg" data-i18n="sec8Title">
+            วิสัยทัศน์และนโยบาย
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <img
+            src="{{ url_for('static', filename='images/sl1.jpg') }}"
+            alt="โรงงาน NS 1"
+            class="w-full h-56 object-cover rounded-2xl shadow-sm border border-gray-200"
+          />
+          <img
+            src="{{ url_for('static', filename='images/sl2.jpg') }}"
+            alt="โรงงาน NS 2"
+            class="w-full h-56 object-cover rounded-2xl shadow-sm border border-gray-200"
+          />
+        </div>
+
+        <p
+          class="text-gray-700 text-sm md:text-base leading-relaxed md:leading-loose text-justify px-2 mb-6"
+          data-i18n="sec8Desc"
+        >
+          บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+          มุ่งมั่นในการพัฒนาเพื่อเป็นผู้นำในการให้บริการแช่แข็ง รับฝากเก็บ ฟรีส
+          คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง
+          อาหารทะเลแปรรูปแช่แข็งและสินค้าปศุสัตว์แช่แข็ง
+          ด้วยระบบการจัดเก็บโดยใช้โปรแกรมที่มีคุณภาพ มีประสิทธิภาพ
+          และระบบการบริหารจัดการที่ได้รับรองมาตรฐานระดับสากล
+          และมีการนำเทคโนโลยีที่ทันสมัยมาใช้ในกระบวนการคลังสินค้า
+          การให้ข้อมูลบริการที่รวดเร็ว และถูกต้อง
+          เพื่อตอบสนองความพึงพอใจของลูกค้าภายใต้นโยบาย
+        </p>
+
+        <div
+          class="border-t border-b border-blue-200 py-6 mt-6 bg-blue-50/50 rounded-2xl text-center"
+        >
+          <h3
+            class="text-xl md:text-2xl text-blue-700 font-semibold tracking-wide"
+            data-i18n="sec8Slogan"
+          >
+            "ถูกต้องแม่นยำ ล้ำเลิศบริการ อาหารปลอดภัย"
+          </h3>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer: ส่วนท้ายเว็บไซต์ แสดงข้อมูลบริษัท ที่อยู่ เบอร์โทร อีเมล และช่องทางติดต่อ พร้อมแผนที่ -->
+    <footer class="bg-blue-dark text-white pt-16 border-t-4 border-[#005ce6]">
+      <div class="container mx-auto px-4 max-w-6xl pb-10">
+        <div class="flex flex-col lg:flex-row justify-between pl-0 md:pl-10">
+          <div class="lg:w-3/4 mb-10 lg:mb-0">
+            <h2
+              class="text-2xl md:text-3xl font-light mb-4 text-white"
+              data-i18n="companyNameTH"
+            >
+              บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+            </h2>
+            <p
+              class="text-sm md:text-base mb-6 text-gray-200 font-light"
+              data-i18n="footerDesc"
+            >
+              บริการแช่แข็ง รับฝากเก็บ คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง<br />
+              สินค้าปศุสัตว์แช่แข็ง และผลไม้แช่แข็ง
+            </p>
+
+            <div
+              class="w-full max-w-3xl h-[1px] bg-white opacity-30 mb-8"
+            ></div>
+
+            <div class="space-y-4 text-sm font-light text-gray-100">
+              <div class="flex items-start">
+                <div class="w-6 flex-shrink-0 mt-0.5">
+                  <i class="fas fa-building opacity-80"></i>
+                </div>
+                <div class="w-24 flex-shrink-0" data-i18n="addrLabel">
+                  ที่ตั้งบริษัท
+                </div>
+                <div class="px-2">:</div>
+                <div data-i18n="addrValue">
+                  150/2 หมู่3 ต.เขารูปช้าง อ.เมืองสงขลา จ.สงขลา 90000
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-6 flex-shrink-0 mt-0.5">
+                  <i class="fas fa-phone opacity-80"></i>
+                </div>
+                <div class="w-24 flex-shrink-0" data-i18n="phoneLabel">
+                  โทรศัพท์
+                </div>
+                <div class="px-2">:</div>
+                <div>074-336990-1 หรือ 089-7377236</div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-6 flex-shrink-0 mt-0.5">
+                  <i class="fas fa-envelope opacity-80"></i>
+                </div>
+                <div class="w-24 flex-shrink-0">อีเมล(Email)</div>
+                <div class="px-2">:</div>
+                <div>mk_nscold@nscold.com</div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-6 flex-shrink-0 mt-0.5">
+                  <div
+                    class="bg-green-500 rounded-full w-[18px] h-[18px] flex items-center justify-center"
+                  >
+                    <i class="fab fa-line text-blue-dark text-xs font-bold"></i>
+                  </div>
+                </div>
+                <div class="w-24 flex-shrink-0">ไลน์(Line)</div>
+                <div class="px-2">:</div>
+                <div>0897377236</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="lg:w-1/4 flex flex-col items-center lg:items-end pr-0 lg:pr-10 mt-8 lg:mt-0"
+          >
+            <!-- ส่วนโลโก้และเฟสบุ๊ค -->
+            <div class="flex items-center space-x-5 mb-5">
+              <img
+                src="{{ url_for('static', filename='images/Logo.png') }}"
+                alt="NS Logo Footer"
+                class="h-16 w-auto object-contain rounded-xl bg-white p-1.5 shadow-md"
+              />
+              <a
+                href="https://www.facebook.com/NSColdStorage"
+                target="_blank"
+                class="w-10 h-10 rounded-full bg-white/10 border border-white/30 flex items-center justify-center hover:bg-blue-600 hover:border-blue-500 cursor-pointer transition-all"
+              >
+                <i class="fab fa-facebook-f text-sm"></i>
+              </a>
+            </div>
+
+            <!-- ส่วนแผนที่ Google Maps -->
+            <div class="w-full max-w-[280px]">
+              <div class="w-full h-[1px] bg-white/15 mb-3"></div>
+              <div
+                class="text-[11px] text-center lg:text-right font-medium tracking-wider mb-2 uppercase text-sky-300"
+              >
+                Location of NS Cold Storage Co.,Ltd.
+              </div>
+              <div
+                class="w-full h-32 rounded-xl overflow-hidden shadow-lg border-2 border-white/20 bg-gray-100"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.711779952692!2d100.63093437499828!3d7.159282415448707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b2cd53013e51c5%3A0xd71f111592c4d6ac!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5gOC4reC5h-C4meC5gOC4reC4quC5guC4hOC4peC4lOC5jOC4quC5guC4leC4o-C5gOC4o-C4iCDguIjguLPguIHguLHguJQ!5e0!3m2!1sth!2sth!4v1790915568904!5m2!1sth!2sth"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                >
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- แถบสีแดง Copyright -->
+      <div class="bg-red-custom py-2">
+        <div
+          class="container mx-auto px-4 flex items-center justify-center space-x-2 text-[10px] md:text-xs text-white"
+        >
+          <span data-i18n="copyright"
+            >Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights
+            Reserved.</span
+          >
+          <img
+            src="{{ url_for('static', filename='images/LogoEdit_.png') }}"
+            alt="NS"
+            class="h-4 md:h-5 opacity-90"
+          />
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript: จัดการการเปลี่ยนภาษาไทยอังกฤษและเมนูมือถือ -->
+    <script>
+      // จัดการเมนู Hamburger บนมือถือ
+      document
+        .getElementById("hamburger-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu-container");
+          menu.classList.toggle("show");
+        });
+
+      function toggleMobileMenu(event, menuId, element) {
+        if (window.innerWidth > 768) return;
+        event.preventDefault();
+
+        // ปิดเมนูย่อยอื่นๆ ที่เปิดอยู่
+        const allMenus = document.querySelectorAll(
+          ".dropdown-menu.show, .submenu.show",
+        );
+        allMenus.forEach((m) => {
+          if (m.id !== menuId && !m.contains(document.getElementById(menuId))) {
+            m.classList.remove("show");
+            const icon = m.previousElementSibling?.querySelector(
+              ".mobile-toggle-icon",
+            );
+            if (icon) icon.classList.remove("rotate");
+          }
+        });
+
+        const targetMenu = document.getElementById(menuId);
+        const icon = element.querySelector(".mobile-toggle-icon");
+        if (targetMenu.classList.contains("show")) {
+          targetMenu.classList.remove("show");
+          if (icon) icon.classList.remove("rotate");
+        } else {
+          targetMenu.classList.add("show");
+          if (icon) icon.classList.add("rotate");
+        }
+      }
+
+      /* translations: เก็บข้อความของเว็บไซต์ทั้งภาษาไทย (th) และภาษาอังกฤษ (en) */
+      const translations = {
+        th: {
+          companyNameTH: "บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด",
+          companyNameEN: "NS COLD STORAGE CO.,LTD.",
+          quickContact: "ติดต่อด่วน",
+          navHome: "หน้าแรก",
+          navServices: "บริการของเรา",
+          srvFreeze: "บริการฟรีส (Freeze)",
+          srvStorage: "บริการรับฝากเก็บสินค้า",
+          srvSorting: "บริการคัดขนาดปลาทูน่า",
+          navDelivery: "บริการส่งมอบสินค้า",
+          subFinishedGoods: "สินค้าสำเร็จรูป",
+          subRawMaterials: "สินค้าวัตถุดิบแช่แข็ง",
+          navAbout: "เกี่ยวกับเรา",
+          aboutScenery: "ทัศนียภาพ",
+          aboutSustainability: "การพัฒนาที่ยั่งยืน",
+          navCareers: "ร่วมงานกับเรา",
+          navContact: "ติดต่อเรา",
+          navActivities: "กิจกรรม",
+          navPrivacy: "นโยบายการคุ้มครองข้อมูลส่วนบุคคล",
+          sec1Title: "ข้อมูลการจดทะเบียนและผู้เปิดการดำเนินกิจการ",
+          sec1FounderLabel: "ผู้เปิดดำเนินกิจการ :",
+          sec1FounderVal: "คุณมานะ ศรีพิทักษ์ (กรรมการผู้จัดการ)",
+          sec1DateLabel: "วันที่เริ่มเปิดดำเนินกิจการ :",
+          sec1DateVal: "1 กรกฎาคม พ.ศ. 2548",
+          sec1CapLabel: "ทุนจดทะเบียนบริษัท :",
+          sec1CapVal: "160 ล้านบาท",
+          sec2Title: "คณะกรรมการผู้จัดการ",
+          sec2Item1: "1). คุณมานะ ศรีพิทักษ์",
+          sec2Item2: "2). คุณสุมนา ศรีพิทักษ์",
+          sec2Item3: "3). คุณณัฐวิชศ ศรีพิทักษ์",
+          sec3Title:
+            "ตำแหน่งที่ตั้งสำนักงานและโรงงานจำนวนพนักงานและระดับการบริหาร",
+          sec3AddrLabel: "ที่ตั้งบริษัท :",
+          sec3AddrVal:
+            "เลขที่ 150/2 หมู่ 3<br>ตำบลเขารูปช้าง อำเภอเมือง จังหวัดสงขลา 90000",
+          sec3EmpLabel: "จำนวนพนักงาน :",
+          sec3EmpVal: "132 คน",
+          sec3LevelLabel: "ระดับการบริหาร 5 ระดับ :",
+          sec3L1: "1). ผู้บริหารระดับสูงสุด",
+          sec3L2: "2). ระดับฝ่าย",
+          sec3L3: "3). ระดับแผนก",
+          sec3L4: "4). ระดับหน่วย",
+          sec3L5: "5). ระดับคนงาน",
+          sec4Title: "บริการโดยรวมของบริษัท",
+          sec4Sub1Title: "บริษัทมีบริการหลักๆ 5 บริการ ดังนี้",
+          sec4S1: "1). บริการฟรีส(Freeze)หรือบริการแช่เยือกแข็ง",
+          sec4S2: "2). บริการฝากเก็บสินค้าในห้องเย็น",
+          sec4S3: "3). บริการคัดขนาดปลาทูน่า",
+          sec4S4: "4). บริการส่งมอบสินค้า โดยแยกย่อยตามประเภทสินค้าดังนี้",
+          sec4S4_1: "4.1). สินค้าสำเร็จรูป",
+          sec4S4_2: "4.2). สินค้าวัตถุดิบแช่แข็ง",
+          sec4S5: "5). บริการให้เช่ารถขนส่งสินค้า",
+          sec4Sub2Title: "ประเภทของสินค้าที่อยู่ในเงื่อนไขของการบริการ",
+          sec4G1: "1). อาหารทะเลแปรรูปแช่แข็ง",
+          sec4G2: "2). สินค้าปศุสัตว์แช่แข็ง",
+          sec4G3:
+            "3). อื่นๆตามความต้องการของผู้ฝากและข้อตกลงที่ลูกค้าตกลงกับทางบริษัท",
+          sec5Title: "เป้าหมายและภารกิจ",
+          sec5Desc:
+            "บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด มีความมุ่งมั่นในการพัฒนาเพื่อเป็นผู้นำในการให้บริการแช่แข็ง รับฝากเก็บ ฟรีส คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง อาหารทะเลแปรรูปแช่แข็ง สินค้าปศุสัตว์แช่แข็ง ด้วยการนำเทคโนโลยีที่ทันสมัย และระบบการจัดการคลังสินค้าที่มีคุณภาพ การให้ข้อมูลการบริการที่รวดเร็วตลอดจนให้ความสำคัญกับ ความปลอดภัย อาชีวอนามัยและสภาพแวดล้อมของพนักงาน และลูกค้า และให้ความสำคัญด้านพลังงาน เพื่อลดผลกระทบในด้านสิ่งแวดล้อมและลดการใช้ทรัพยากรธรรมชาติอย่างยั่งยืน",
+          sec6Title: "มาตรฐานที่บริษัทได้รับการรับรอง",
+          sec6Cert1:
+            "ISO9001 : 2015 ได้รับการรับรองระบบบริหารงานคุณภาพตามมาตรฐาน โดยสถาบันรับรองมาตรฐานไอเอสโอ",
+          sec6Cert2:
+            "ISO22000 : 2005 ได้รับการรับรองระบบการจัดการความปลอดภัยของอาหารตามมาตรฐาน โดยสถาบันรับรองมาตรฐานไอเอสโอ",
+          sec6Cert3:
+            "HACCP ได้รับการรับรองระบบการจัดการสุขลักษณะที่ดีในสถานประกอบการ และระบบการวิเคราะห์อันตรายและจุดวิกฤตที่ต้องควบคุม โดย สถาบันรับรองมาตรฐานไอเอสโอ",
+          sec6Cert4:
+            "GMP การรับรองสุขลักษณะของสถานที่ประกอบการตามมาตรฐานของกรมประมง กระทรวงเกษตรและสหกรณ์",
+          sec6Cert5:
+            "GMP การรับรองสุขลักษณะของสถานที่ประกอบการตามมาตรฐานของกรมปศุสัตว์ กระทรวงเกษตรและสหกรณ์ (EST. 308)",
+          sec6Cert6: "MSC & ASC",
+          sec6Cert7:
+            "ได้ผ่านการตรวจรับรองสถานที่พักซากสัตว์น้ำ กรมประมง กระทรวงเกษตรและสหกรณ์ (ต.ร.ซ.น.6)",
+          sec6Cert8:
+            "ได้ผ่านการตรวจรับรองที่พักซากสัตว์ สำหรับการบริโภคเพื่อการ นำเข้าในราชอาณาจักร นำออกนอกราชอาณาจักร เคลื่อนย้ายภายในราชอาณาจักร กรมปศุสัตว์ กระทรวงเกษตรและสหกรณ์ (ต.ร.ซ.4)",
+          sec7Title: "พันธกิจ",
+          sec7Desc:
+            "ถือเป็นภารกิจของพนักงาน บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด ทุกคนที่จะต้องร่วมกันปรับปรุงพัฒนาให้บริษัทฯ สามารถเป็นผู้ให้บริการรับฝากสินค้าแช่แข็งที่มีคุณภาพ มีประสิทธิภาพและความปลอดภัย และสามารถสร้างความพึงพอใจอย่างสูงสุดและต่อเนื่องต่อผู้มาใช้บริการ และเพื่อสร้างชื่อเสียงให้บริษัทฯเป็นที่ยอมรับของลูกค้าระดับประเทศ",
+          sec8Title: "วิสัยทัศน์และนโยบาย",
+          sec8Desc:
+            "บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด มุ่งมั่นในการพัฒนาเพื่อเป็นผู้นำในการให้บริการแช่แข็ง รับฝากเก็บ ฟรีส คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง อาหารทะเลแปรรูปแช่แข็ง และสินค้าปศุสัตว์แช่แข็ง ด้วยระบบการจัดเก็บโดยใช้โปรแกรมที่มีคุณภาพ มีประสิทธิภาพ และความปลอดภัยสูง และระบบการบริหารจัดการที่ได้รับรองมาตรฐานระดับสากล และมีการนำเทคโนโลยีที่ทันสมัยมาใช้ในกระบวนการคลังสินค้า การให้ข้อมูลบริการที่รวดเร็ว และถูกต้อง เพื่อตอบสนองความพึงพอใจของลูกค้าภายใต้นโยบาย",
+          sec8Slogan: '"ถูกต้องแม่นยำ ล้ำเลิศบริการ อาหารปลอดภัย"',
+          footerDesc:
+            "บริการแช่แข็ง รับฝากเก็บ คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง<br />สินค้าปศุสัตว์แช่แข็ง และผลไม้แช่แข็ง",
+          addrLabel: "ที่ตั้งบริษัท",
+          addrValue: "150/2 หมู่3 ต.เขารูปช้าง อ.เมืองสงขลา จ.สงขลา 90000",
+          phoneLabel: "โทรศัพท์",
+          copyright:
+            "Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights Reserved.",
+        },
+        en: {
+          companyNameTH: "NS Cold Storage Co., Ltd.",
+          companyNameEN: "NS COLD STORAGE CO.,LTD.",
+          quickContact: "Quick Contacts",
+          navHome: "Home",
+          navServices: "Our Services",
+          srvFreeze: "Freeze Service",
+          srvStorage: "Cold Storage Service",
+          srvSorting: "Tuna Sorting Service",
+          navDelivery: "Delivery Service",
+          subFinishedGoods: "Finished Goods",
+          subRawMaterials: "Frozen Raw Materials",
+          navAbout: "About Us",
+          aboutScenery: "Scenery",
+          aboutSustainability: "Sustainability",
+          navCareers: "Careers",
+          navContact: "Contact Us",
+          navActivities: "Activities",
+          navPrivacy: "Privacy Policy",
+          sec1Title: "Registration and Founder Information",
+          sec1FounderLabel: "Founder / Managing Director:",
+          sec1FounderVal: "Mr. Mana Sripitak (Managing Director)",
+          sec1DateLabel: "Operation Starting Date:",
+          sec1DateVal: "July 1, 2005",
+          sec1CapLabel: "Registered Capital:",
+          sec1CapVal: "160 Million Baht",
+          sec2Title: "Board of Managing Directors",
+          sec2Item1: "1). Mr. Mana Sripitak",
+          sec2Item2: "2). Mrs. Sumana Sripitak",
+          sec2Item3: "3). Mr. Nattawich Sripitak",
+          sec3Title:
+            "Office & Factory Location, Employees, and Management Levels",
+          sec3AddrLabel: "Company Address:",
+          sec3AddrVal:
+            "150/2 Moo 3, Khao Rup Chang, Mueang Songkhla, Songkhla 90000",
+          sec3EmpLabel: "Total Employees:",
+          sec3EmpVal: "132 Persons",
+          sec3LevelLabel: "5 Management Levels:",
+          sec3L1: "1). Top Executive Level",
+          sec3L2: "2). Department Level",
+          sec3L3: "3). Section Level",
+          sec3L4: "4). Unit Level",
+          sec3L5: "5). Worker Level",
+          sec4Title: "Overall Company Services",
+          sec4Sub1Title: "Our 5 Core Services:",
+          sec4S1: "1). Freezing Service",
+          sec4S2: "2). Cold Storage Deposit Service",
+          sec4S3: "3). Tuna Sorting Service",
+          sec4S4: "4). Delivery Service categorized by product types:",
+          sec4S4_1: "4.1). Finished Goods",
+          sec4S4_2: "4.2). Frozen Raw Materials",
+          sec4S5: "5). Refrigerated Truck Rental Service",
+          sec4Sub2Title: "Eligible Product Types:",
+          sec4G1: "1). Frozen Processed Seafood",
+          sec4G2: "2). Frozen Livestock Products",
+          sec4G3: "3). Other products as requested and agreed upon",
+          sec5Title: "Goals and Mission",
+          sec5Desc:
+            "NS Cold Storage Co., Ltd. is committed to becoming a leading provider of freezing, cold storage, sorting, and delivery services for frozen seafood, processed seafood, and livestock products. Utilizing advanced technology, high-quality warehouse management systems, rapid service information, and placing strong emphasis on occupational safety, health, environmental protection, and sustainable energy conservation.",
+          sec6Title: "Certified Standards & Certificates",
+          sec6Cert1:
+            "ISO9001 : 2015 Quality Management System Certified by MASCI",
+          sec6Cert2:
+            "ISO22000 : 2005 Food Safety Management System Certified by MASCI",
+          sec6Cert3:
+            "HACCP Good Hygiene Practices and Hazard Analysis Critical Control Point System Certified by MASCI",
+          sec6Cert4:
+            "GMP Establishment Hygiene Certification by Department of Fisheries",
+          sec6Cert5:
+            "GMP Establishment Hygiene Certification by Department of Livestock Development (EST. 308)",
+          sec6Cert6: "MSC & ASC",
+          sec6Cert7:
+            "Aquatic Animal Carcass Rest Area Certification by Department of Fisheries (ต.ร.ซ.น.6)",
+          sec6Cert8:
+            "Animal Carcass Rest Area Certification for Import, Export, and Domestic Transport by Department of Livestock Development (ต.ร.ซ.4)",
+          sec7Title: "Mission",
+          sec7Desc:
+            "It is the mission of all employees at NS Cold Storage Co., Ltd. to continuously improve and develop the company as a high-quality, efficient, and safe cold storage service provider, ensuring maximum and continuous customer satisfaction and building a reputation recognized at the national level.",
+          sec8Title: "Vision and Policy",
+          sec8Desc:
+            "NS Cold Storage Co., Ltd. is dedicated to being the leader in freezing, cold storage, sorting, and delivery of frozen seafood and livestock. Powered by secure, high-performance warehouse software, internationally certified management systems, and advanced logistics technologies to ensure prompt and accurate service under our core policy.",
+          sec8Slogan: '"Accuracy, Excellent Service, Safe Food"',
+          footerDesc:
+            "Freezing, cold storage, grading, and delivery of frozen seafood, livestock, and fruits.",
+          addrLabel: "Address",
+          addrValue:
+            "150/2 Moo 3, Khao Rup Chang, Mueang Songkhla, Songkhla 90000",
+          phoneLabel: "Phone",
+          copyright:
+            "Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights Reserved.",
+        },
+      };
+
+      function setLanguage(lang) {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+
+        // จัดการสถานะปุ่มเปลี่ยนภาษา (แยก ID ของ Mobile และ Desktop)
+        const btnThDesktop = document.getElementById("btn-th-desktop");
+        const btnEnDesktop = document.getElementById("btn-en-desktop");
+        const btnThMobile = document.getElementById("btn-th-mobile");
+        const btnEnMobile = document.getElementById("btn-en-mobile");
+
+        const activeClassDesktop =
+          "px-4 py-1.5 md:px-3.5 md:py-1 rounded-full bg-blue-custom text-white shadow-sm transition-colors cursor-pointer text-[13px] font-medium";
+        const inactiveClassDesktop =
+          "px-4 py-1.5 md:px-3.5 md:py-1 rounded-full text-gray-500 hover:text-blue-custom transition-colors cursor-pointer text-[13px] font-medium";
+
+        const activeClassMobile =
+          "px-2.5 py-1 rounded-full bg-blue-custom text-white shadow-sm text-xs font-medium";
+        const inactiveClassMobile =
+          "px-2.5 py-1 rounded-full text-gray-500 text-xs font-medium";
+
+        if (lang === "th") {
+          if (btnThDesktop) btnThDesktop.className = activeClassDesktop;
+          if (btnEnDesktop) btnEnDesktop.className = inactiveClassDesktop;
+          if (btnThMobile) btnThMobile.className = activeClassMobile;
+          if (btnEnMobile) btnEnMobile.className = inactiveClassMobile;
+        } else {
+          if (btnEnDesktop) btnEnDesktop.className = activeClassDesktop;
+          if (btnThDesktop) btnThDesktop.className = inactiveClassDesktop;
+          if (btnEnMobile) btnEnMobile.className = activeClassMobile;
+          if (btnThMobile) btnThMobile.className = inactiveClassMobile;
+        }
+      }
+    </script>
+  </body>
+</html>

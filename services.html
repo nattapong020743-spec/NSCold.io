@@ -1,0 +1,1138 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>บริการของเรา - บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด</title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/Logo.png') }}"
+    />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- STREAMING_CHUNK:Styling navigation layout cards and interactions -->
+    <style>
+      body {
+        font-family: "Kanit", sans-serif;
+        background-color: #f4f7fb;
+      }
+      .text-blue-custom {
+        color: #004d99;
+      }
+      .bg-blue-custom {
+        background-color: #005ce6;
+      }
+      .bg-blue-dark {
+        background-color: #002255;
+      }
+      .bg-red-custom {
+        background-color: #e62e2d;
+      }
+
+      /* 
+       * =======================================================
+       * Service Card Design (Royal Navy Premium)
+       * แสดงผลรูปภาพเต็มใบ พร้อมการจัดวางองค์ประกอบให้อ่านง่าย
+       * =======================================================
+       */
+      .service-card-new {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 24px;
+        padding: 18px;
+        box-shadow: 0 12px 30px -10px rgba(0, 34, 85, 0.12);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        position: relative;
+      }
+      .service-card-new:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 45px -10px rgba(0, 92, 230, 0.22);
+        border-color: #38bdf8;
+      }
+
+      /* กรอบรูปด้านใน (แสดงรูปเต็มใบ ไม่ตัดขอบ) */
+      .service-img-wrapper {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border-radius: 18px;
+        overflow: hidden;
+        background-color: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #edf2f7;
+      }
+      .service-img-wrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.5s ease;
+      }
+      .service-card-new:hover .service-img-wrapper img {
+        transform: scale(1.04);
+      }
+
+      /* การจัดวางข้อความ Title */
+      .service-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-top: 1.25rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+        transition: color 0.3s ease;
+      }
+      .service-card-new:hover .service-title {
+        color: #005ce6;
+      }
+
+      /* ลิงก์ตัวเลือกย่อยแบบปุ่มแคปซูล */
+      .service-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+      .service-link-item {
+        font-size: 0.9rem;
+        color: #0284c7;
+        text-decoration: none;
+        padding: 6px 18px;
+        border-radius: 9999px;
+        background-color: #f0f9ff;
+        border: 1px solid #bae6fd;
+        transition: all 0.25s ease;
+        font-weight: 500;
+      }
+      .service-link-item:hover {
+        background-color: #005ce6;
+        color: #ffffff;
+        border-color: #005ce6;
+        box-shadow: 0 4px 12px rgba(0, 92, 230, 0.25);
+      }
+
+      /* ========================================================
+         Desktop Navigation Styles (Royal Navy Command Bar)
+         ======================================================== */
+      @media (min-width: 769px) {
+        .desktop-Command-bar {
+          background: linear-gradient(
+            90deg,
+            #001f4d 0%,
+            #003380 50%,
+            #001f4d 100%
+          );
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 3px solid #005ce6;
+          box-shadow: 0 10px 25px -5px rgba(0, 26, 64, 0.35);
+        }
+
+        .nav-item {
+          padding: 10px 18px;
+          border-radius: 12px;
+          transition: all 0.25s ease;
+          color: #e2e8f0;
+          position: relative;
+          white-space: nowrap;
+          font-weight: 500;
+        }
+        .nav-item:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+          transform: translateY(-1px);
+        }
+
+        /* ปุ่มที่ Active บนแถบสีน้ำเงินเข้ม */
+        .nav-item.active-desktop {
+          background: linear-gradient(135deg, #0066ff 0%, #0044cc 100%);
+          color: #ffffff !important;
+          box-shadow:
+            0 4px 15px rgba(0, 102, 255, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* ลูกศรบนแถบเมนู Desktop */
+        .nav-caret-desktop {
+          color: #38bdf8 !important;
+          transition: transform 0.25s ease;
+        }
+        .group:hover > .nav-item .nav-caret-desktop {
+          transform: rotate(180deg);
+          color: #ffffff !important;
+        }
+
+        /* กล่อง Dropdown เมนูย่อย */
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          background-color: #ffffff;
+          min-width: 260px;
+          box-shadow:
+            0 25px 50px -12px rgba(0, 26, 64, 0.25),
+            0 0 0 1px rgba(0, 77, 153, 0.08);
+          z-index: 50;
+          top: calc(100% + 8px);
+          left: 0;
+          border-radius: 16px;
+          overflow: visible;
+          padding: 8px;
+          border-top: 4px solid #005ce6;
+          animation: dropdownSlide 0.2s ease-out forwards;
+        }
+        .dropdown-menu::before {
+          content: "";
+          position: absolute;
+          top: -12px;
+          left: 0;
+          width: 100%;
+          height: 12px;
+        }
+        .group:hover > .dropdown-menu {
+          display: block;
+        }
+
+        @keyframes dropdownSlide {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .dropdown-item {
+          color: #1e293b;
+          padding: 11px 16px;
+          text-decoration: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 10px;
+          font-size: 14px;
+          position: relative;
+          transition: all 0.2s ease;
+          margin-bottom: 2px;
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-item:hover {
+          background-color: #eff6ff;
+          color: #005ce6;
+          padding-left: 20px;
+          font-weight: 500;
+        }
+
+        .submenu {
+          display: none;
+          position: absolute;
+          background-color: #ffffff;
+          min-width: 230px;
+          box-shadow:
+            0 25px 50px -12px rgba(0, 26, 64, 0.25),
+            0 0 0 1px rgba(0, 77, 153, 0.08);
+          z-index: 60;
+          top: -4px;
+          left: calc(100% + 8px);
+          border-radius: 16px;
+          overflow: hidden;
+          padding: 8px;
+          border-top: 4px solid #38bdf8;
+          animation: dropdownSlide 0.2s ease-out forwards;
+        }
+        .submenu::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -10px;
+          width: 10px;
+          height: 100%;
+        }
+        .has-submenu:hover > .submenu {
+          display: block;
+        }
+      }
+
+      /* Custom Mobile Header Layout & Hamburger Menu */
+      @media (max-width: 768px) {
+        .mobile-header-grid {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          grid-template-areas:
+            "logo actions"
+            "title title";
+          gap: 12px;
+          align-items: center;
+        }
+        .header-logo {
+          grid-area: logo;
+          justify-self: start;
+        }
+        .header-actions {
+          grid-area: actions;
+          justify-self: end;
+        }
+        .header-title {
+          grid-area: title;
+          text-align: center;
+          margin-bottom: 8px;
+        }
+
+        #mobile-menu-container {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: white;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+          z-index: 100;
+          border-top: 1px solid #f1f5f9;
+        }
+        #mobile-menu-container.show {
+          display: flex;
+        }
+
+        .mobile-nav-ul {
+          flex-direction: column;
+          width: 100%;
+          padding: 0;
+        }
+        .mobile-nav-ul > li {
+          width: 100%;
+          border-bottom: 1px solid #f8fafc;
+        }
+        .nav-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 14px 20px;
+          font-size: 16px;
+          width: 100%;
+          border-radius: 0;
+          color: #1e293b;
+        }
+
+        .dropdown-menu {
+          display: none;
+          background-color: #f8fafc;
+          width: 100%;
+          position: static;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          flex-direction: column;
+        }
+        .dropdown-menu.show {
+          display: flex;
+        }
+        .dropdown-item {
+          padding: 12px 20px 12px 40px;
+          font-size: 15px;
+          border-bottom: 1px solid #e2e8f0;
+          color: #475569;
+          display: block;
+          width: 100%;
+          text-align: left;
+        }
+        .dropdown-item.has-submenu-link {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .submenu {
+          display: none;
+          background-color: #f1f5f9;
+          width: 100%;
+          position: static;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          flex-direction: column;
+        }
+        .submenu.show {
+          display: flex;
+        }
+        .submenu .dropdown-item {
+          padding-left: 60px;
+          font-size: 14px;
+        }
+
+        .mobile-toggle-icon {
+          transition: transform 0.3s;
+        }
+        .mobile-toggle-icon.rotate {
+          transform: rotate(180deg);
+        }
+      }
+    </style>
+  </head>
+  <!-- STREAMING_CHUNK:Rendering header section with logo and action controls -->
+  <body class="text-gray-800 antialiased flex flex-col min-h-screen">
+    <!-- ========================================================
+         ส่วนหัวเว็บไซต์ (Header + Royal Navy Command Bar)
+         ======================================================== -->
+    <header class="bg-white pt-3 md:pt-4 shadow-sm z-50 relative sticky top-0">
+      <!-- แถบตกแต่งด้านบนสุด -->
+      <div
+        class="hidden md:block h-1.5 w-full bg-gradient-to-r from-[#002255] via-[#005ce6] to-[#e62e2d] absolute top-0 left-0"
+      ></div>
+
+      <div class="container mx-auto px-4 max-w-6xl md:pb-3">
+        <div
+          class="mobile-header-grid md:flex md:flex-row md:justify-between md:items-center relative min-h-[90px]"
+        >
+          <!-- 1. โลโก้กดกลับหน้าแรก -->
+          <div class="header-logo flex items-center space-x-2 md:static z-10">
+            <!-- ปุ่ม Hamburger จะแสดงเฉพาะจอมือถือ -->
+            <button
+              id="hamburger-btn"
+              class="md:hidden text-blue-custom text-2xl p-2 cursor-pointer focus:outline-none"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <a
+              href="{{ url_for('home') }}"
+              class="flex-shrink-0 cursor-pointer group flex items-center space-x-4"
+            >
+              <div
+                class="md:p-2 md:bg-slate-50 md:rounded-2xl md:border md:border-slate-200/80 md:shadow-sm group-hover:border-blue-300 transition-all"
+              >
+                <img
+                  src="{{ url_for('static', filename='images/Logo_NS.png') }}"
+                  alt="NS Cold Storage Logo"
+                  class="h-16 md:h-16 object-contain drop-shadow-sm"
+                />
+              </div>
+              <!-- แถบข้อความเล็กๆ ข้างโลโก้เฉพาะจอคอม -->
+              <div
+                class="hidden lg:flex flex-col border-l-2 border-slate-200 pl-4 py-1"
+              >
+                <span
+                  class="text-[11px] font-semibold uppercase tracking-widest text-blue-600"
+                  >Cold Chain Logistics</span
+                >
+                <span class="text-xs text-slate-400 font-light"
+                  >Songkhla, Thailand</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- 2. ชื่อบริษัทตรงกลาง -->
+          <div
+            class="header-title flex-grow flex flex-col justify-center items-center w-full md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2"
+          >
+            <h1
+              class="text-lg sm:text-xl md:text-[26px] font-semibold text-[#003380] mb-0.5 md:mb-1 tracking-tight"
+              data-i18n="companyNameTH"
+            >
+              บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+            </h1>
+            <div class="flex items-center space-x-2">
+              <span
+                class="hidden md:inline-block w-6 h-[1px] bg-blue-300"
+              ></span>
+              <h2
+                class="text-sm md:text-[15px] text-slate-500 font-medium tracking-widest uppercase"
+                data-i18n="companyNameEN"
+              >
+                NS COLD STORAGE CO.,LTD.
+              </h2>
+              <span
+                class="hidden md:inline-block w-6 h-[1px] bg-blue-300"
+              ></span>
+            </div>
+          </div>
+
+          <!-- 3. ปุ่มสลับภาษา & ติดต่อด่วน -->
+          <div
+            class="header-actions flex items-center space-x-3 md:space-x-4 md:static z-10"
+          >
+            <div
+              class="flex items-center bg-slate-100 border border-slate-200 rounded-full p-1 shadow-inner text-sm font-medium"
+            >
+              <button
+                id="btn-th-desktop"
+                onclick="setLanguage('th')"
+                class="px-4 py-1.5 md:px-3.5 md:py-1 rounded-full bg-blue-custom text-white shadow-sm transition-colors cursor-pointer"
+              >
+                TH
+              </button>
+              <button
+                id="btn-en-desktop"
+                onclick="setLanguage('en')"
+                class="px-4 py-1.5 md:px-3.5 md:py-1 rounded-full text-gray-500 hover:text-blue-custom transition-colors cursor-pointer"
+              >
+                EN
+              </button>
+            </div>
+
+            <!-- ปุ่มติดต่อด่วน -->
+            <a
+              href="{{ url_for('contact_us') }}"
+              class="bg-gradient-to-br from-[#ff3b3a] to-[#c81e1d] text-white text-center py-2 px-4 md:px-5 rounded-2xl flex flex-col md:flex-row justify-center items-center h-16 w-20 md:h-14 md:w-auto md:space-x-3 hover:from-red-600 hover:to-red-800 cursor-pointer transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-red-400/30"
+            >
+              <div
+                class="hidden md:flex w-9 h-9 rounded-xl bg-white/15 items-center justify-center"
+              >
+                <i class="fas fa-phone-volume text-white animate-pulse"></i>
+              </div>
+              <div class="flex flex-col md:text-left">
+                <span
+                  class="text-[10px] md:text-[11px] leading-tight mb-0.5 md:mb-0 font-light text-red-100"
+                  data-i18n="quickContact"
+                  >ติดต่อด่วน</span
+                >
+                <span
+                  class="text-[11px] md:text-[13px] font-semibold leading-tight tracking-wide"
+                  >Quick<br class="md:hidden" />
+                  Contacts</span
+                >
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Bar (แถบเมนูสีน้ำเงินเข้ม Royal Navy บนจอคอม) -->
+      <nav
+        id="mobile-menu-container"
+        class="md:block desktop-Command-bar md:py-2.5"
+      >
+        <!-- เมนูสลับภาษาบนมือถือ -->
+        <div
+          class="px-4 py-3 sm:hidden flex justify-center bg-slate-50 border-b border-slate-100"
+        >
+          <div
+            class="flex items-center bg-white rounded-full p-1 shadow-inner border border-slate-200 w-full max-w-[200px] justify-center"
+          >
+            <button
+              id="btn-th-mobile"
+              onclick="setLanguage('th')"
+              class="w-1/2 px-4 py-1.5 rounded-full bg-blue-custom text-white font-semibold shadow-sm text-sm"
+            >
+              TH
+            </button>
+            <button
+              id="btn-en-mobile"
+              onclick="setLanguage('en')"
+              class="w-1/2 px-4 py-1.5 rounded-full text-slate-500 font-medium text-sm"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+
+        <div class="container mx-auto px-0 md:px-4 max-w-6xl">
+          <ul
+            class="mobile-nav-ul md:flex md:flex-wrap md:justify-center md:items-center md:space-x-1 lg:space-x-2 text-sm md:text-[15px] font-medium"
+          >
+            <li>
+              <a
+                href="{{ url_for('home') }}"
+                class="nav-item block"
+                data-i18n="navHome"
+                >หน้าแรก</a
+              >
+            </li>
+
+            <!-- เมนู บริการของเรา (Active) -->
+            <li class="relative group">
+              <a
+                href="#"
+                class="nav-item active-desktop flex items-center justify-between md:justify-start"
+                onclick="toggleMobileMenu(event, 'servicesMenu', this)"
+              >
+                <span data-i18n="navServices">บริการของเรา</span>
+                <i
+                  class="fas fa-caret-down ml-1.5 text-blue-custom text-xs mobile-toggle-icon nav-caret-desktop"
+                ></i>
+              </a>
+              <div id="servicesMenu" class="dropdown-menu">
+                <a
+                  href="{{ url_for('services') }}"
+                  class="dropdown-item font-medium text-blue-600 bg-blue-50 md:bg-transparent"
+                  data-i18n="navServices"
+                  >บริการของเรา</a
+                >
+                <a
+                  href="{{ url_for('service_freeze') }}"
+                  class="dropdown-item"
+                  data-i18n="srvFreeze"
+                  >บริการฟรีส (Freeze)</a
+                >
+
+                <div class="relative has-submenu">
+                  <a
+                    href="#"
+                    class="dropdown-item has-submenu-link"
+                    onclick="toggleMobileMenu(event, 'storageMenu', this)"
+                  >
+                    <span data-i18n="srvStorage">บริการรับฝากเก็บสินค้า</span>
+                    <i
+                      class="fas fa-caret-right text-blue-custom text-xs ml-2 md:block hidden"
+                    ></i>
+                    <i
+                      class="fas fa-caret-down text-blue-custom text-xs ml-2 md:hidden mobile-toggle-icon"
+                    ></i>
+                  </a>
+                  <div id="storageMenu" class="submenu">
+                    <a
+                      href="{{ url_for('service_finished_goods') }}"
+                      class="dropdown-item"
+                      data-i18n="subFinishedGoods"
+                      >สินค้าสำเร็จรูป</a
+                    >
+                    <a
+                      href="{{ url_for('service_raw_materials') }}"
+                      class="dropdown-item"
+                      data-i18n="subRawMaterials"
+                      >สินค้าวัตถุดิบแช่แข็ง</a
+                    >
+                  </div>
+                </div>
+
+                <a
+                  href="{{ url_for('services') }}"
+                  class="dropdown-item"
+                  data-i18n="srvSorting"
+                  >บริการคัดขนาดปลาทูน่า</a
+                >
+
+                <div class="relative has-submenu">
+                  <a
+                    href="#"
+                    class="dropdown-item has-submenu-link"
+                    onclick="toggleMobileMenu(event, 'deliveryMenu', this)"
+                  >
+                    <span data-i18n="navDelivery">บริการส่งมอบสินค้า</span>
+                    <i
+                      class="fas fa-caret-right text-blue-custom text-xs ml-2 md:block hidden"
+                    ></i>
+                    <i
+                      class="fas fa-caret-down text-blue-custom text-xs ml-2 md:hidden mobile-toggle-icon"
+                    ></i>
+                  </a>
+                  <div id="deliveryMenu" class="submenu">
+                    <a
+                      href="{{ url_for('delivery_finished_goods') }}"
+                      class="dropdown-item"
+                      data-i18n="subFinishedGoods"
+                      >สินค้าสำเร็จรูป</a
+                    >
+                    <a
+                      href="{{ url_for('delivery_raw_materials') }}"
+                      class="dropdown-item"
+                      data-i18n="subRawMaterials"
+                      >สินค้าวัตถุดิบแช่แข็ง</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- เมนู เกี่ยวกับเรา พร้อมดรอปดาวน์ -->
+            <li class="relative group">
+              <a
+                href="#"
+                class="nav-item flex items-center justify-between md:justify-start"
+                onclick="toggleMobileMenu(event, 'aboutMenu', this)"
+              >
+                <span data-i18n="navAbout">เกี่ยวกับเรา</span>
+                <i
+                  class="fas fa-caret-down ml-1.5 text-blue-custom text-xs mobile-toggle-icon nav-caret-desktop"
+                ></i>
+              </a>
+              <div id="aboutMenu" class="dropdown-menu">
+                <a
+                  href="{{ url_for('about_us') }}"
+                  class="dropdown-item"
+                  data-i18n="navAbout"
+                  >เกี่ยวกับเรา</a
+                >
+                <a
+                  href="{{ url_for('scenery') }}"
+                  class="dropdown-item"
+                  data-i18n="aboutScenery"
+                  >ทัศนียภาพ</a
+                >
+                <a
+                  href="{{ url_for('sustainability') }}"
+                  class="dropdown-item"
+                  data-i18n="aboutSustainability"
+                  >การพัฒนาที่ยั่งยืน</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="{{ url_for('careers') }}"
+                class="nav-item block"
+                data-i18n="navCareers"
+                >ร่วมงานกับเรา</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('contact_us') }}"
+                class="nav-item block"
+                data-i18n="navContact"
+                >ติดต่อเรา</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-item block" data-i18n="navActivities"
+                >กิจกรรม</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('fanpage') }}"
+                target="_blank"
+                class="nav-item block"
+                data-i18n="navFanpage"
+                >Fanpage</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('privacy_policy') }}"
+                class="nav-item block"
+                data-i18n="navPrivacy"
+                >นโยบายการคุ้มครองข้อมูลส่วนบุคคล</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ========================================================
+         Hero Gradient Stage (พื้นหลังไล่ระดับสี Dark Navy แบบหน้าแรก)
+         ======================================================== -->
+    <div
+      class="relative bg-gradient-to-b from-[#001a40] via-[#002b66] to-[#f4f7fb] pt-8 md:pt-12 pb-16 overflow-hidden flex-grow"
+    >
+      <!-- แสง Ambient ตกแต่งฉากหลัง -->
+      <div
+        class="hidden md:block absolute top-10 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"
+      ></div>
+      <div
+        class="hidden md:block absolute bottom-10 right-1/4 w-96 h-96 bg-sky-400/15 rounded-full blur-3xl pointer-events-none"
+      ></div>
+
+      <!-- Main Content -->
+      <main class="container mx-auto px-4 max-w-5xl relative z-10">
+        <!-- Header Section -->
+        <div
+          class="bg-gradient-to-r from-[#003380] via-[#005ce6] to-[#003380] text-white text-center py-5 rounded-2xl text-2xl md:text-3xl font-medium mb-12 shadow-xl border border-white/20 relative overflow-hidden"
+        >
+          <i
+            class="fas fa-cubes text-7xl text-white/5 absolute -left-2 -bottom-3 pointer-events-none transform -rotate-12"
+          ></i>
+          <span class="relative z-10" data-i18n="navServices"
+            >บริการของเรา</span
+          >
+        </div>
+
+        <!-- Services Grid -->
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 px-2 md:px-6"
+        >
+          <!-- 1. บริการฟรีส (Freeze) -->
+          <a
+            href="{{ url_for('service_freeze') }}"
+            class="service-card-new group"
+          >
+            <div class="service-img-wrapper">
+              <img
+                src="{{ url_for('static', filename='images/ฟรีส (Freeze).jpeg') }}"
+                alt="บริการฟรีส"
+              />
+            </div>
+            <div>
+              <h3 class="service-title" data-i18n="srvFreeze">
+                บริการฟรีส (Freeze)
+              </h3>
+            </div>
+          </a>
+
+          <!-- 2. บริการรับฝากเก็บสินค้า -->
+          <div class="service-card-new group border-[#e2e8f0]">
+            <div class="service-img-wrapper">
+              <img
+                src="{{ url_for('static', filename='images/รับฝากเก็บสินค้า.jpeg') }}"
+                alt="บริการรับฝากเก็บสินค้า"
+              />
+            </div>
+            <div>
+              <h3 class="service-title" data-i18n="srvStorage">
+                บริการรับฝากเก็บสินค้า
+              </h3>
+              <div class="service-links">
+                <a
+                  href="{{ url_for('service_finished_goods') }}"
+                  class="service-link-item"
+                  data-i18n="subFinishedGoods"
+                  >สินค้าสำเร็จรูป</a
+                >
+                <a
+                  href="{{ url_for('service_raw_materials') }}"
+                  class="service-link-item"
+                  data-i18n="subRawMaterials"
+                  >สินค้าวัตถุดิบแช่แข็ง</a
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. บริการคัดขนาดปลาทูน่า -->
+          <a href="{{ url_for('services') }}" class="service-card-new group">
+            <div class="service-img-wrapper">
+              <img
+                src="{{ url_for('static', filename='images/คัดขนาดปลาทูน่า.jpeg') }}"
+                alt="บริการคัดขนาดปลาทูน่า"
+              />
+            </div>
+            <div>
+              <h3 class="service-title" data-i18n="srvSorting">
+                บริการคัดขนาดปลาทูน่า
+              </h3>
+            </div>
+          </a>
+
+          <!-- 4. บริการส่งมอบสินค้า -->
+          <div class="service-card-new group border-[#e2e8f0]">
+            <div class="service-img-wrapper">
+              <img
+                src="{{ url_for('static', filename='images/บริการส่งมอบ.jpg') }}"
+                alt="บริการส่งมอบสินค้า"
+              />
+            </div>
+            <div>
+              <h3 class="service-title" data-i18n="navDelivery">
+                บริการส่งมอบสินค้า
+              </h3>
+              <div class="service-links">
+                <a
+                  href="{{ url_for('delivery_finished_goods') }}"
+                  class="service-link-item"
+                  data-i18n="subFinishedGoods"
+                  >สินค้าสำเร็จรูป</a
+                >
+                <a
+                  href="{{ url_for('delivery_raw_materials') }}"
+                  class="service-link-item"
+                  data-i18n="subRawMaterials"
+                  >สินค้าวัตถุดิบแช่แข็ง</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- STREAMING_CHUNK:Rendering footer with company details, contacts, and embedded map -->
+    <!-- Footer Section -->
+    <footer
+      class="bg-gradient-to-b from-[#002255] to-[#001533] text-white pt-16 border-t-4 border-[#005ce6]"
+    >
+      <div class="container mx-auto px-4 max-w-6xl pb-10">
+        <div class="flex flex-col lg:flex-row justify-between pl-0 md:pl-10">
+          <div class="lg:w-3/4 mb-10 lg:mb-0">
+            <h2
+              class="text-2xl md:text-3xl font-medium mb-3 text-white tracking-wide"
+              data-i18n="companyNameTH"
+            >
+              บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+            </h2>
+            <p
+              class="text-sm md:text-base mb-6 text-sky-200/90 font-light leading-relaxed"
+              data-i18n="footerDesc"
+            >
+              บริการแช่แข็ง รับฝากเก็บ คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง<br />
+              สินค้าปศุสัตว์แช่แข็ง และผลไม้แช่แข็ง
+            </p>
+
+            <div class="w-full max-w-3xl h-[1px] bg-white/15 mb-8"></div>
+
+            <div class="space-y-4 text-sm font-light text-gray-100">
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5 text-sky-400">
+                  <i class="fas fa-building"></i>
+                </div>
+                <div
+                  class="w-24 flex-shrink-0 font-normal text-sky-200"
+                  data-i18n="addrLabel"
+                >
+                  ที่ตั้งบริษัท
+                </div>
+                <div class="px-2">:</div>
+                <div data-i18n="addrValue">
+                  150/2 หมู่3 ต.เขารูปช้าง อ.เมืองสงขลา จ.สงขลา 90000
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5 text-sky-400">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div
+                  class="w-24 flex-shrink-0 font-normal text-sky-200"
+                  data-i18n="phoneLabel"
+                >
+                  โทรศัพท์
+                </div>
+                <div class="px-2">:</div>
+                <div>074-336990-1 หรือ 089-7377236</div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5 text-sky-400">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="w-24 flex-shrink-0 font-normal text-sky-200">
+                  อีเมล(Email)
+                </div>
+                <div class="px-2">:</div>
+                <div>mk_nscold@nscold.com</div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5">
+                  <div
+                    class="bg-green-500 rounded-full w-[18px] h-[18px] flex items-center justify-center shadow-md"
+                  >
+                    <i class="fab fa-line text-blue-dark text-xs font-bold"></i>
+                  </div>
+                </div>
+                <div class="w-24 flex-shrink-0 font-normal text-sky-200">
+                  ไลน์(Line)
+                </div>
+                <div class="px-2">:</div>
+                <div>0897377236</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="lg:w-1/4 flex flex-col items-center lg:items-end pr-0 lg:pr-10 mt-8 lg:mt-0"
+          >
+            <!-- ส่วนโลโก้และเฟสบุ๊ค -->
+            <div class="flex items-center space-x-5 mb-5">
+              <img
+                src="{{ url_for('static', filename='images/Logo.png') }}"
+                alt="NS Logo Footer"
+                class="h-16 w-auto object-contain rounded-xl bg-white p-1.5 shadow-md"
+              />
+              <a
+                href="https://www.facebook.com/NSColdStorage"
+                target="_blank"
+                class="w-10 h-10 rounded-full bg-white/10 border border-white/30 flex items-center justify-center hover:bg-blue-600 hover:border-blue-500 cursor-pointer transition-all"
+              >
+                <i class="fab fa-facebook-f text-sm"></i>
+              </a>
+            </div>
+
+            <!-- ส่วนแผนที่ Google Maps -->
+            <div class="w-full max-w-[280px]">
+              <div class="w-full h-[1px] bg-white/15 mb-3"></div>
+              <div
+                class="text-[11px] text-center lg:text-right font-medium tracking-wider mb-2 uppercase text-sky-300"
+              >
+                Location of NS Cold Storage Co.,Ltd.
+              </div>
+              <div
+                class="w-full h-32 rounded-xl overflow-hidden shadow-lg border-2 border-white/20 bg-gray-100"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.711779952692!2d100.63093437499828!3d7.159282415448707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b2cd53013e51c5%3A0xd71f111592c4d6ac!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5gOC4reC5h-C4meC5gOC4reC4quC5guC4hOC4peC4lOC5jOC4quC5guC4leC4o-C5gOC4o-C4iCDguIjguLPguIHguLHguJQ!5e0!3m2!1sth!2sth!4v1790915568904!5m2!1sth!2sth"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                >
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- แถบสีแดง Copyright (2011-2026 พร้อมโลโก้) -->
+      <div class="bg-red-custom py-2">
+        <div
+          class="container mx-auto px-4 flex items-center justify-center space-x-2 text-[10px] md:text-xs text-white"
+        >
+          <span data-i18n="copyright"
+            >Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights
+            Reserved.</span
+          >
+          <img
+            src="{{ url_for('static', filename='images/LogoEdit_.png') }}"
+            alt="NS"
+            class="h-4 md:h-5 opacity-90"
+          />
+        </div>
+      </div>
+    </footer>
+
+    <!-- STREAMING_CHUNK:Adding script for hamburger mobile toggles and localization -->
+    <script>
+      // จัดการเมนู Hamburger บนมือถือ
+      document
+        .getElementById("hamburger-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu-container");
+          menu.classList.toggle("show");
+        });
+
+      function toggleMobileMenu(event, menuId, element) {
+        if (window.innerWidth > 768) return;
+        event.preventDefault();
+
+        // ปิดเมนูย่อยอื่นๆ ที่เปิดอยู่
+        const allMenus = document.querySelectorAll(
+          ".dropdown-menu.show, .submenu.show",
+        );
+        allMenus.forEach((m) => {
+          if (m.id !== menuId && !m.contains(document.getElementById(menuId))) {
+            m.classList.remove("show");
+            const icon = m.previousElementSibling?.querySelector(
+              ".mobile-toggle-icon",
+            );
+            if (icon) icon.classList.remove("rotate");
+          }
+        });
+
+        const targetMenu = document.getElementById(menuId);
+        const icon = element.querySelector(".mobile-toggle-icon");
+        if (targetMenu.classList.contains("show")) {
+          targetMenu.classList.remove("show");
+          if (icon) icon.classList.remove("rotate");
+        } else {
+          targetMenu.classList.add("show");
+          if (icon) icon.classList.add("rotate");
+        }
+      }
+
+      const translations = {
+        th: {
+          companyNameTH: "บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด",
+          companyNameEN: "NS COLD STORAGE CO.,LTD.",
+          quickContact: "ติดต่อด่วน",
+          navHome: "หน้าแรก",
+          navServices: "บริการของเรา",
+          srvFreeze: "บริการฟรีส (Freeze)",
+          srvStorage: "บริการรับฝากเก็บสินค้า",
+          srvSorting: "บริการคัดขนาดปลาทูน่า",
+          navDelivery: "บริการส่งมอบสินค้า",
+          subFinishedGoods: "สินค้าสำเร็จรูป",
+          subRawMaterials: "สินค้าวัตถุดิบแช่แข็ง",
+          navAbout: "เกี่ยวกับเรา",
+          aboutScenery: "ทัศนียภาพ",
+          aboutSustainability: "การพัฒนาที่ยั่งยืน",
+          navCareers: "ร่วมงานกับเรา",
+          navContact: "ติดต่อเรา",
+          navActivities: "กิจกรรม",
+          navPrivacy: "นโยบายการคุ้มครองข้อมูลส่วนบุคคล",
+          footerDesc:
+            "บริการแช่แข็ง รับฝากเก็บ คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง<br />สินค้าปศุสัตว์แช่แข็ง และผลไม้แช่แข็ง",
+          addrLabel: "ที่ตั้งบริษัท",
+          addrValue: "150/2 หมู่3 ต.เขารูปช้าง อ.เมืองสงขลา จ.สงขลา 90000",
+          phoneLabel: "โทรศัพท์",
+          copyright:
+            "Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights Reserved.",
+        },
+        en: {
+          companyNameTH: "NS Cold Storage Co., Ltd.",
+          companyNameEN: "NS COLD STORAGE CO.,LTD.",
+          quickContact: "Quick Contacts",
+          navHome: "Home",
+          navServices: "Our Services",
+          srvFreeze: "Freeze Service",
+          srvStorage: "Cold Storage Service",
+          srvSorting: "Tuna Sorting Service",
+          navDelivery: "Delivery Service",
+          subFinishedGoods: "Finished Goods",
+          subRawMaterials: "Frozen Raw Materials",
+          navAbout: "About Us",
+          aboutScenery: "Scenery",
+          aboutSustainability: "Sustainability",
+          navCareers: "Careers",
+          navContact: "Contact Us",
+          navActivities: "Activities",
+          navPrivacy: "Privacy Policy",
+          footerDesc:
+            "Freezing, cold storage, grading, and delivery of frozen seafood, livestock, and fruits.",
+          addrLabel: "Address",
+          addrValue:
+            "150/2 Moo 3, Khao Rup Chang, Mueang Songkhla, Songkhla 90000",
+          phoneLabel: "Phone",
+          copyright:
+            "Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights Reserved.",
+        },
+      };
+
+      function setLanguage(lang) {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+
+        // จัดการสถานะปุ่มเปลี่ยนภาษา (แยก ID ของ Mobile และ Desktop)
+        const btnThDesktop = document.getElementById("btn-th-desktop");
+        const btnEnDesktop = document.getElementById("btn-en-desktop");
+        const btnThMobile = document.getElementById("btn-th-mobile");
+        const btnEnMobile = document.getElementById("btn-en-mobile");
+
+        const activeClassDesktop =
+          "px-4 py-1.5 md:px-3.5 md:py-1 rounded-full bg-blue-custom text-white shadow-sm transition-colors cursor-pointer text-[13px] font-medium";
+        const inactiveClassDesktop =
+          "px-4 py-1.5 md:px-3.5 md:py-1 rounded-full text-gray-500 hover:text-blue-custom transition-colors cursor-pointer text-[13px] font-medium";
+
+        const activeClassMobile =
+          "px-2.5 py-1 rounded-full bg-blue-custom text-white shadow-sm text-xs font-medium";
+        const inactiveClassMobile =
+          "px-2.5 py-1 rounded-full text-gray-500 text-xs font-medium";
+
+        if (lang === "th") {
+          if (btnThDesktop) btnThDesktop.className = activeClassDesktop;
+          if (btnEnDesktop) btnEnDesktop.className = inactiveClassDesktop;
+          if (btnThMobile) btnThMobile.className = activeClassMobile;
+          if (btnEnMobile) btnEnMobile.className = inactiveClassMobile;
+        } else {
+          if (btnEnDesktop) btnEnDesktop.className = activeClassDesktop;
+          if (btnThDesktop) btnThDesktop.className = inactiveClassDesktop;
+          if (btnEnMobile) btnEnMobile.className = activeClassMobile;
+          if (btnThMobile) btnThMobile.className = inactiveClassMobile;
+        }
+      }
+    </script>
+  </body>
+</html>

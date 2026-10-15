@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      นโยบายการคุ้มครองข้อมูลส่วนบุคคล - บริษัท เอ็น เอส โคลด์ สตอเรจ จำกัด
+    </title>
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="{{ url_for('static', filename='images/Logo.png') }}"
+    />
+    <meta
+      name="keywords"
+      content="บริษัท เอ็น เอส โคลด์ สตอเรจ จำกัด, นโยบายการคุ้มครองข้อมูลส่วนบุคคล, Privacy Policy"
+    />
+    <meta
+      name="description"
+      content="นโยบายการคุ้มครองข้อมูลส่วนบุคคล บริษัท เอ็น เอส โคลด์ สตอเรจ จำกัด"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- STREAMING_CHUNK:Styling layout, navigation menus, and privacy policy sections -->
+    <style>
+      body {
+        font-family: "Kanit", sans-serif;
+        background-color: #f4f7fb;
+      }
+      .text-blue-custom {
+        color: #004d99;
+      }
+      .bg-blue-custom {
+        background-color: #005ce6;
+      }
+      .bg-blue-dark {
+        background-color: #002255;
+      }
+      .bg-red-custom {
+        background-color: #e62e2d;
+      }
+
+      /* ========================================================
+         Desktop Navigation Styles (Royal Navy Command Bar)
+         ======================================================== */
+      @media (min-width: 769px) {
+        .desktop-Command-bar {
+          background: linear-gradient(
+            90deg,
+            #001f4d 0%,
+            #003380 50%,
+            #001f4d 100%
+          );
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
+          border-bottom: 3px solid #005ce6;
+          box-shadow: 0 10px 25px -5px rgba(0, 26, 64, 0.35);
+        }
+
+        .nav-item {
+          padding: 10px 18px;
+          border-radius: 12px;
+          transition: all 0.25s ease;
+          color: #e2e8f0;
+          position: relative;
+          white-space: nowrap;
+          font-weight: 500;
+        }
+        .nav-item:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          color: #ffffff;
+          transform: translateY(-1px);
+        }
+
+        /* ปุ่มที่ Active บนแถบสีน้ำเงินเข้ม */
+        .nav-item.active-desktop {
+          background: linear-gradient(135deg, #0066ff 0%, #0044cc 100%);
+          color: #ffffff !important;
+          box-shadow:
+            0 4px 15px rgba(0, 102, 255, 0.5),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* ลูกศรบนแถบเมนู Desktop */
+        .nav-caret-desktop {
+          color: #38bdf8 !important;
+          transition: transform 0.25s ease;
+        }
+        .group:hover > .nav-item .nav-caret-desktop {
+          transform: rotate(180deg);
+          color: #ffffff !important;
+        }
+
+        /* กล่อง Dropdown เมนูย่อย */
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          background-color: #ffffff;
+          min-width: 260px;
+          box-shadow:
+            0 25px 50px -12px rgba(0, 26, 64, 0.25),
+            0 0 0 1px rgba(0, 77, 153, 0.08);
+          z-index: 50;
+          top: calc(100% + 8px);
+          left: 0;
+          border-radius: 16px;
+          overflow: visible;
+          padding: 8px;
+          border-top: 4px solid #005ce6;
+          animation: dropdownSlide 0.2s ease-out forwards;
+        }
+        /* สะพานรับเมาส์ไม่ให้หลุด */
+        .dropdown-menu::before {
+          content: "";
+          position: absolute;
+          top: -12px;
+          left: 0;
+          width: 100%;
+          height: 12px;
+        }
+        .group:hover > .dropdown-menu {
+          display: block;
+        }
+
+        @keyframes dropdownSlide {
+          from {
+            opacity: 0;
+            transform: translateY(8px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .dropdown-item {
+          color: #1e293b;
+          padding: 11px 16px;
+          text-decoration: none;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-radius: 10px;
+          font-size: 14px;
+          position: relative;
+          transition: all 0.2s ease;
+          margin-bottom: 2px;
+        }
+        .dropdown-item:last-child {
+          margin-bottom: 0;
+        }
+        .dropdown-item:hover {
+          background-color: #eff6ff;
+          color: #005ce6;
+          padding-left: 20px;
+          font-weight: 500;
+        }
+
+        .submenu {
+          display: none;
+          position: absolute;
+          background-color: #ffffff;
+          min-width: 230px;
+          box-shadow:
+            0 25px 50px -12px rgba(0, 26, 64, 0.25),
+            0 0 0 1px rgba(0, 77, 153, 0.08);
+          z-index: 60;
+          top: -4px;
+          left: calc(100% + 8px);
+          border-radius: 16px;
+          overflow: hidden;
+          padding: 8px;
+          border-top: 4px solid #38bdf8;
+          animation: dropdownSlide 0.2s ease-out forwards;
+        }
+        .submenu::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: -10px;
+          width: 10px;
+          height: 100%;
+        }
+        .has-submenu:hover > .submenu {
+          display: block;
+        }
+      }
+
+      /* Custom Mobile Layout & Hamburger Menu */
+      @media (max-width: 768px) {
+        .mobile-header-grid {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          grid-template-areas:
+            "logo actions"
+            "title title";
+          gap: 12px;
+          align-items: center;
+        }
+        .header-logo {
+          grid-area: logo;
+          justify-self: start;
+        }
+        .header-actions {
+          grid-area: actions;
+          justify-self: end;
+        }
+        .header-title {
+          grid-area: title;
+          text-align: center;
+          margin-bottom: 8px;
+        }
+
+        #mobile-menu-container {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: white;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+          z-index: 100;
+          border-top: 1px solid #f1f5f9;
+        }
+        #mobile-menu-container.show {
+          display: flex;
+        }
+
+        .mobile-nav-ul {
+          flex-direction: column;
+          width: 100%;
+          padding: 0;
+        }
+        .mobile-nav-ul > li {
+          width: 100%;
+          border-bottom: 1px solid #f8fafc;
+        }
+        .nav-item {
+          display: flex;
+          justify-content: space-between;
+          padding: 14px 20px;
+          font-size: 16px;
+          width: 100%;
+          border-radius: 0;
+          color: #1e293b;
+        }
+
+        .dropdown-menu {
+          display: none;
+          background-color: #f8fafc;
+          width: 100%;
+          position: static;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          flex-direction: column;
+        }
+        .dropdown-menu.show {
+          display: flex;
+        }
+        .dropdown-item {
+          padding: 12px 20px 12px 40px;
+          font-size: 15px;
+          border-bottom: 1px solid #e2e8f0;
+          color: #475569;
+          display: block;
+          width: 100%;
+          text-align: left;
+        }
+        .dropdown-item.has-submenu-link {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .submenu {
+          display: none;
+          background-color: #f1f5f9;
+          width: 100%;
+          position: static;
+          box-shadow: none;
+          border: none;
+          border-radius: 0;
+          flex-direction: column;
+        }
+        .submenu.show {
+          display: flex;
+        }
+        .submenu .dropdown-item {
+          padding-left: 60px;
+          font-size: 14px;
+        }
+
+        .mobile-toggle-icon {
+          transition: transform 0.3s;
+        }
+        .mobile-toggle-icon.rotate {
+          transform: rotate(180deg);
+        }
+      }
+
+      .policy-header {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8);
+        color: white;
+        padding: 8px 24px;
+        border-radius: 9999px;
+        display: inline-block;
+        font-size: 1.125rem;
+        font-weight: 500;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+      }
+
+      .policy-content p {
+        margin-bottom: 12px;
+        line-height: 1.7;
+        color: #334155;
+      }
+      .policy-content ul {
+        list-style-type: disc;
+        padding-left: 2rem;
+        margin-bottom: 16px;
+        color: #334155;
+      }
+      .policy-content li {
+        margin-bottom: 8px;
+        line-height: 1.6;
+      }
+      .indent-1 {
+        padding-left: 1.5rem;
+      }
+      .indent-2 {
+        padding-left: 3rem;
+      }
+    </style>
+  </head>
+  <!-- STREAMING_CHUNK:Rendering header section with logo and quick contact button -->
+  <body class="text-gray-800 antialiased flex flex-col min-h-screen">
+    <!-- ========================================================
+         ส่วนหัวเว็บไซต์ (Header + Royal Navy Command Bar)
+         ======================================================== -->
+    <header class="bg-white pt-3 md:pt-4 shadow-sm z-50 relative sticky top-0">
+      <!-- แถบตกแต่งด้านบนสุด -->
+      <div
+        class="hidden md:block h-1.5 w-full bg-gradient-to-r from-[#002255] via-[#005ce6] to-[#e62e2d] absolute top-0 left-0"
+      ></div>
+
+      <div class="container mx-auto px-4 max-w-6xl md:pb-3">
+        <div
+          class="mobile-header-grid md:flex md:flex-row md:justify-between md:items-center relative min-h-[90px]"
+        >
+          <!-- 1. โลโก้กดกลับหน้าแรก -->
+          <div class="header-logo flex items-center space-x-2 md:static z-10">
+            <!-- ปุ่ม Hamburger จะแสดงเฉพาะจอมือถือ -->
+            <button
+              id="hamburger-btn"
+              class="md:hidden text-blue-custom text-2xl p-2 cursor-pointer focus:outline-none"
+            >
+              <i class="fas fa-bars"></i>
+            </button>
+            <a
+              href="{{ url_for('home') }}"
+              class="flex-shrink-0 cursor-pointer group flex items-center space-x-4"
+            >
+              <div
+                class="md:p-2 md:bg-slate-50 md:rounded-2xl md:border md:border-slate-200/80 md:shadow-sm group-hover:border-blue-300 transition-all"
+              >
+                <img
+                  src="{{ url_for('static', filename='images/Logo_NS.png') }}"
+                  alt="NS Cold Storage Logo"
+                  class="h-16 md:h-16 object-contain drop-shadow-sm"
+                />
+              </div>
+              <!-- แถบข้อความเล็กๆ ข้างโลโก้เฉพาะจอคอม -->
+              <div
+                class="hidden lg:flex flex-col border-l-2 border-slate-200 pl-4 py-1"
+              >
+                <span
+                  class="text-[11px] font-semibold uppercase tracking-widest text-blue-600"
+                  >Cold Chain Logistics</span
+                >
+                <span class="text-xs text-slate-400 font-light"
+                  >Songkhla, Thailand</span
+                >
+              </div>
+            </a>
+          </div>
+
+          <!-- 2. ชื่อบริษัทตรงกลาง -->
+          <div
+            class="header-title flex-grow flex flex-col justify-center items-center w-full md:w-auto md:absolute md:left-1/2 md:-translate-x-1/2"
+          >
+            <h1
+              class="text-lg sm:text-xl md:text-[26px] font-semibold text-[#003380] mb-0.5 md:mb-1 tracking-tight"
+              data-i18n="companyNameTH"
+            >
+              บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+            </h1>
+            <div class="flex items-center space-x-2">
+              <span
+                class="hidden md:inline-block w-6 h-[1px] bg-blue-300"
+              ></span>
+              <h2
+                class="text-sm md:text-[15px] text-slate-500 font-medium tracking-widest uppercase"
+                data-i18n="companyNameEN"
+              >
+                NS COLD STORAGE CO.,LTD.
+              </h2>
+              <span
+                class="hidden md:inline-block w-6 h-[1px] bg-blue-300"
+              ></span>
+            </div>
+          </div>
+
+          <!-- 3. ปุ่มสลับภาษา & ติดต่อด่วน -->
+          <div
+            class="header-actions flex items-center space-x-3 md:space-x-4 md:static z-10"
+          >
+            <div
+              class="flex items-center bg-slate-100 border border-slate-200 rounded-full p-1 shadow-inner text-sm font-medium"
+            >
+              <button
+                id="btn-th-desktop"
+                onclick="setLanguage('th')"
+                class="px-4 py-1.5 md:px-3.5 md:py-1 rounded-full bg-blue-custom text-white shadow-sm transition-colors cursor-pointer"
+              >
+                TH
+              </button>
+              <button
+                id="btn-en-desktop"
+                onclick="setLanguage('en')"
+                class="px-4 py-1.5 md:px-3.5 md:py-1 rounded-full text-gray-500 hover:text-blue-custom transition-colors cursor-pointer"
+              >
+                EN
+              </button>
+            </div>
+
+            <!-- ปุ่มติดต่อด่วน -->
+            <a
+              href="{{ url_for('contact_us') }}"
+              class="bg-gradient-to-br from-[#ff3b3a] to-[#c81e1d] text-white text-center py-2 px-4 md:px-5 rounded-2xl flex flex-col md:flex-row justify-center items-center h-16 w-20 md:h-14 md:w-auto md:space-x-3 hover:from-red-600 hover:to-red-800 cursor-pointer transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 border border-red-400/30"
+            >
+              <div
+                class="hidden md:flex w-9 h-9 rounded-xl bg-white/15 items-center justify-center"
+              >
+                <i class="fas fa-phone-volume text-white animate-pulse"></i>
+              </div>
+              <div class="flex flex-col md:text-left">
+                <span
+                  class="text-[10px] md:text-[11px] leading-tight mb-0.5 md:mb-0 font-light text-red-100"
+                  data-i18n="quickContact"
+                  >ติดต่อด่วน</span
+                >
+                <span
+                  class="text-[11px] md:text-[13px] font-semibold leading-tight tracking-wide"
+                  >Quick<br class="md:hidden" />
+                  Contacts</span
+                >
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Bar (แถบเมนูสีน้ำเงินเข้ม Royal Navy บนจอคอม) -->
+      <nav
+        id="mobile-menu-container"
+        class="md:block desktop-Command-bar md:py-2.5"
+      >
+        <!-- เมนูสลับภาษาบนมือถือ -->
+        <div
+          class="px-4 py-3 sm:hidden flex justify-center bg-slate-50 border-b border-slate-100"
+        >
+          <div
+            class="flex items-center bg-white rounded-full p-1 shadow-inner border border-slate-200 w-full max-w-[200px] justify-center"
+          >
+            <button
+              id="btn-th-mobile"
+              onclick="setLanguage('th')"
+              class="w-1/2 px-4 py-1.5 rounded-full bg-blue-custom text-white font-semibold shadow-sm text-sm"
+            >
+              TH
+            </button>
+            <button
+              id="btn-en-mobile"
+              onclick="setLanguage('en')"
+              class="w-1/2 px-4 py-1.5 rounded-full text-slate-500 font-medium text-sm"
+            >
+              EN
+            </button>
+          </div>
+        </div>
+
+        <div class="container mx-auto px-0 md:px-4 max-w-6xl">
+          <ul
+            class="mobile-nav-ul md:flex md:flex-wrap md:justify-center md:items-center md:space-x-1 lg:space-x-2 text-sm md:text-[15px] font-medium"
+          >
+            <li>
+              <a
+                href="{{ url_for('home') }}"
+                class="nav-item block"
+                data-i18n="navHome"
+                >หน้าแรก</a
+              >
+            </li>
+
+            <!-- เมนู บริการของเรา -->
+            <li class="relative group">
+              <a
+                href="#"
+                class="nav-item flex items-center justify-between md:justify-start"
+                onclick="toggleMobileMenu(event, 'servicesMenu', this)"
+              >
+                <span data-i18n="navServices">บริการของเรา</span>
+                <i
+                  class="fas fa-caret-down ml-1.5 text-blue-custom text-xs mobile-toggle-icon nav-caret-desktop"
+                ></i>
+              </a>
+              <div id="servicesMenu" class="dropdown-menu">
+                <a
+                  href="{{ url_for('services') }}"
+                  class="dropdown-item"
+                  data-i18n="navServices"
+                  >บริการของเรา</a
+                >
+                <a
+                  href="{{ url_for('service_freeze') }}"
+                  class="dropdown-item"
+                  data-i18n="srvFreeze"
+                  >บริการฟรีส (Freeze)</a
+                >
+
+                <div class="relative has-submenu">
+                  <a
+                    href="#"
+                    class="dropdown-item has-submenu-link"
+                    onclick="toggleMobileMenu(event, 'storageMenu', this)"
+                  >
+                    <span data-i18n="srvStorage">บริการรับฝากเก็บสินค้า</span>
+                    <i
+                      class="fas fa-caret-right text-blue-custom text-xs ml-2 md:block hidden"
+                    ></i>
+                    <i
+                      class="fas fa-caret-down text-blue-custom text-xs ml-2 md:hidden mobile-toggle-icon"
+                    ></i>
+                  </a>
+                  <div id="storageMenu" class="submenu">
+                    <a
+                      href="{{ url_for('service_finished_goods') }}"
+                      class="dropdown-item"
+                      data-i18n="subFinishedGoods"
+                      >สินค้าสำเร็จรูป</a
+                    >
+                    <a
+                      href="{{ url_for('service_raw_materials') }}"
+                      class="dropdown-item"
+                      data-i18n="subRawMaterials"
+                      >สินค้าวัตถุดิบแช่แข็ง</a
+                    >
+                  </div>
+                </div>
+
+                <a
+                  href="{{ url_for('services') }}"
+                  class="dropdown-item"
+                  data-i18n="srvSorting"
+                  >บริการคัดขนาดปลาทูน่า</a
+                >
+
+                <div class="relative has-submenu">
+                  <a
+                    href="#"
+                    class="dropdown-item has-submenu-link"
+                    onclick="toggleMobileMenu(event, 'deliveryMenu', this)"
+                  >
+                    <span data-i18n="navDelivery">บริการส่งมอบสินค้า</span>
+                    <i
+                      class="fas fa-caret-right text-blue-custom text-xs ml-2 md:block hidden"
+                    ></i>
+                    <i
+                      class="fas fa-caret-down text-blue-custom text-xs ml-2 md:hidden mobile-toggle-icon"
+                    ></i>
+                  </a>
+                  <div id="deliveryMenu" class="submenu">
+                    <a
+                      href="{{ url_for('delivery_finished_goods') }}"
+                      class="dropdown-item"
+                      data-i18n="subFinishedGoods"
+                      >สินค้าสำเร็จรูป</a
+                    >
+                    <a
+                      href="{{ url_for('delivery_raw_materials') }}"
+                      class="dropdown-item"
+                      data-i18n="subRawMaterials"
+                      >สินค้าวัตถุดิบแช่แข็ง</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <!-- เมนู เกี่ยวกับเรา พร้อมดรอปดาวน์ -->
+            <li class="relative group">
+              <a
+                href="#"
+                class="nav-item flex items-center justify-between md:justify-start"
+                onclick="toggleMobileMenu(event, 'aboutMenu', this)"
+              >
+                <span data-i18n="navAbout">เกี่ยวกับเรา</span>
+                <i
+                  class="fas fa-caret-down ml-1.5 text-blue-custom text-xs mobile-toggle-icon nav-caret-desktop"
+                ></i>
+              </a>
+              <div id="aboutMenu" class="dropdown-menu">
+                <a
+                  href="{{ url_for('about_us') }}"
+                  class="dropdown-item"
+                  data-i18n="navAbout"
+                  >เกี่ยวกับเรา</a
+                >
+                <a
+                  href="{{ url_for('scenery') }}"
+                  class="dropdown-item"
+                  data-i18n="aboutScenery"
+                  >ทัศนียภาพ</a
+                >
+                <a
+                  href="{{ url_for('sustainability') }}"
+                  class="dropdown-item"
+                  data-i18n="aboutSustainability"
+                  >การพัฒนาที่ยั่งยืน</a
+                >
+              </div>
+            </li>
+
+            <li>
+              <a
+                href="{{ url_for('careers') }}"
+                class="nav-item block"
+                data-i18n="navCareers"
+                >ร่วมงานกับเรา</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('contact_us') }}"
+                class="nav-item block"
+                data-i18n="navContact"
+                >ติดต่อเรา</a
+              >
+            </li>
+            <li>
+              <a href="#" class="nav-item block" data-i18n="navActivities"
+                >กิจกรรม</a
+              >
+            </li>
+            <li>
+              <a
+                href="{{ url_for('fanpage') }}"
+                target="_blank"
+                class="nav-item block"
+                data-i18n="navFanpage"
+                >Fanpage</a
+              >
+            </li>
+            <li>
+              <!-- ตั้งค่า Active ให้ปุ่มนี้ เพราะเป็นหน้า Privacy Policy -->
+              <a
+                href="{{ url_for('privacy_policy') }}"
+                class="nav-item active-desktop block"
+                data-i18n="navPrivacy"
+                >นโยบายการคุ้มครองข้อมูลส่วนบุคคล</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ========================================================
+         Hero Gradient Stage (พื้นหลัง Dark Navy สุดพรีเมียมแบบหน้าแรก)
+         ======================================================== -->
+    <div
+      class="relative bg-gradient-to-b from-[#001a40] via-[#002b66] to-[#f4f7fb] pt-8 md:pt-12 pb-14 overflow-hidden"
+    >
+      <!-- แสง Ambient ตกแต่งฉากหลัง -->
+      <div
+        class="hidden md:block absolute top-10 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"
+      ></div>
+      <div
+        class="hidden md:block absolute bottom-10 right-1/4 w-96 h-96 bg-sky-400/15 rounded-full blur-3xl pointer-events-none"
+      ></div>
+
+      <div class="container mx-auto px-4 max-w-5xl relative z-10 text-center">
+        <!-- Badge หมวดหมู่ -->
+        <div
+          class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md text-sky-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest mb-3 border border-white/20 shadow-sm"
+        >
+          <i class="fas fa-shield-halved text-sky-400"></i>
+          <span>Data Protection & Privacy</span>
+        </div>
+
+        <h1
+          class="text-2xl md:text-4xl font-bold text-white mb-2 tracking-tight drop-shadow-md"
+          data-i18n="navPrivacy"
+        >
+          นโยบายการคุ้มครองข้อมูลส่วนบุคคล
+        </h1>
+        <div class="h-1 w-20 bg-red-500 mx-auto mt-4 rounded-full"></div>
+      </div>
+    </div>
+
+    <!-- STREAMING_CHUNK:Rendering main privacy policy document sections 1 to 4 -->
+    <!-- Main Content -->
+    <main
+      class="container mx-auto px-4 max-w-5xl py-12 policy-content font-light text-gray-700 bg-white shadow-xl rounded-3xl -mt-6 mb-16 flex-grow border border-slate-200/80 relative z-20"
+    >
+      <p class="text-base md:text-lg px-2">
+        บริษัท เอ็น เอส โคลด์ สตอเรจ จำกัด
+        ตระหนักถึงความสำคัญของการคุ้มครองข้อมูลส่วนบุคคล
+        และมีการกำกับดูแลและการบริหารจัดการข้อมูลส่วนบุคคล
+        ให้มีความสอดคล้องกับกฎหมายคุ้มครองข้อมูลส่วนบุคคล และกฎหมายที่เกี่ยวข้อง
+        จึงขอประกาศนโยบายคุ้มครองข้อมูลส่วนบุคคลให้ท่านทราบเพื่อเป็นการปฏิบัติตาม
+        พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562 โดยมีสาระสำคัญดังต่อไปนี้
+      </p>
+
+      <div class="policy-header">1) ข้อมูลส่วนบุคคล</div>
+      <p class="indent-1 font-medium text-blue-800">
+        1.1) ลักษณะของข้อมูลส่วนบุคคล
+      </p>
+      <p class="indent-2">
+        ในเอกสารฉบับนี้ข้อมูลส่วนบุคคล หมายถึง ข้อมูลใด ๆ
+        ที่เกี่ยวกับบุคคลธรรมดาที่ทำให้สามารถระบุตัวบุคคลธรรมดานั้นได้ไม่ว่าทางตรงหรือทางอ้อม
+        โดยไม่รวมถึงข้อมูลส่วนบุคคลของผู้ถึงแก่กรรม
+        ข้อมูลส่วนบุคคลที่มีความอ่อนไหวหมายถึง ข้อมูลส่วนบุคคลเกี่ยวกับเชื้อชาติ
+        เผ่าพันธุ์ ความคิดเห็นทางการเมือง ความเชื่อในลัทธิ ศาสนาหรือปรัชญา
+        พฤติกรรมทางเพศ ประวัติอาชญากรรม ข้อมูลสุขภาพ ความพิการ ข้อมูลสหภาพแรงงาน
+        ข้อมูลพันธุกรรม ข้อมูลชีวภาพ (เช่น การสแกนลายนิ้วมือ การสแกนใบหน้า
+        เป็นต้น)
+        หรือข้อมูลอื่นใดซึ่งกระทบต่อเจ้าของข้อมูลส่วนบุคคลในทำนองเดียวกันตามที่คณะกรรมการคุ้มครองข้อมูลส่วนบุคคลประกาศกำหนด
+      </p>
+
+      <p class="indent-1 font-medium text-blue-800 mt-4">
+        1.2) ข้อมูลส่วนบุคคลที่มีการเก็บรวบรวม
+      </p>
+      <p class="indent-2">
+        บริษัทฯ อาจมีการเก็บรวบรวมข้อมูลส่วนบุคคลของท่าน ดังต่อไปนี้<br /><b
+          >ข้อมูลส่วนบุคคลทั่วไป</b
+        >
+      </p>
+      <div class="indent-2 mt-2">
+        <p>
+          (ก) ข้อมูลส่วนตัว ได้แก่ ชื่อและนามสกุล วันเดือนปี สถานที่เกิด สถานภาพ
+          ข้อมูลตามที่ระบุในบัตรประจำตัวประชาชนและหนังสือเดินทาง
+          สำเนาบัตรประชาชน หรือหมายเลขบัตรประชาชน
+        </p>
+        <p>
+          (ข) ข้อมูลติดต่อ ได้แก่ ที่อยู่ หมายเลขโทรศัพท์ Line ID
+          ช่องทางติดต่อในสื่อสังคมออนไลน์ สถานที่ทำงาน
+        </p>
+        <p>(ค) ตำแหน่งงาน หน่วยงานหรือองค์กร</p>
+        <p>
+          (ง) ข้อมูลเกี่ยวกับการใช้งานระบบอิเล็กทรอนิกส์ ได้แก่ email
+          หมายเลขไอพี (IP Address) ประเภทของโปรแกรมบราวเซอร์ (Browser) และคุกกี้
+          (Cookies) ประวัติการสนทนาในแอปพลิเคชันต่าง ๆ
+        </p>
+        <p>
+          (จ) ข้อมูลที่ท่านได้ให้ไว้เมื่อท่านติดต่อ หรือร่วมกิจกรรมใด ๆ
+          กับบริษัทฯ เป็นต้น
+        </p>
+      </div>
+
+      <div class="policy-header">2) การเคารพสิทธิในความเป็นส่วนบุคคล</div>
+      <p class="indent-1">
+        บริษัทฯ เคารพสิทธิในข้อมูลส่วนบุคคลของเจ้าของข้อมูล
+        และตระหนักดีว่าเจ้าของข้อมูล
+        ย่อมมีความประสงค์ที่จะได้รับความมั่นคงปลอดภัยเกี่ยวกับข้อมูลของตน
+        ข้อมูลส่วนบุคคลที่บริษัทฯได้รับมา
+        จะถูกนำไปใช้ตามวัตถุประสงค์ที่เกี่ยวข้องเท่านั้น โดยบริษัทฯ
+        มีมาตรการเข้มงวดในการรักษาความมั่นคงปลอดภัย
+        ตลอดจนการป้องกันมิให้มีการนำข้อมูลส่วนบุคคลไปใช้โดยมิชอบด้วยกฎหมาย
+      </p>
+
+      <div class="policy-header">3) การเก็บรวบรวมข้อมูลส่วนบุคคล</div>
+      <p class="indent-1">
+        บริษัทฯ จะเก็บรวบรวมข้อมูลส่วนบุคคลจากเจ้าของข้อมูลโดยตรง
+        และจะนำข้อมูลส่วนบุคคลไปใช้ รวมถึงเปิดเผยข้อมูลส่วนบุคคล
+        เท่าที่จำเป็นตามวัตถุประสงค์ที่บริษัทฯ
+        ได้แจ้งไว้ในกรณีที่กฎหมายกำหนดให้ต้องขอความยินยอม บริษัทฯ
+        จะขอความยินยอมจากเจ้าของข้อมูลก่อนหรือขณะทำการเก็บรวบรวม ทั้งนี้ บริษัทฯ
+        อาจรวบรวมข้อมูลส่วนบุคคลที่ได้รับมาจากแหล่งอื่นที่ไม่ใช่จากเจ้าของข้อมูลส่วนบุคคลโดยตรง
+        เช่น จากสื่อสาธารณะต่าง ๆ
+        เฉพาะในกรณีที่มีความจำเป็นด้วยวิธีการตามที่กฎหมายกำหนด
+      </p>
+
+      <div class="policy-header">
+        4) วัตถุประสงค์ในการเก็บรวบรวม ใช้ และเปิดเผยข้อมูลส่วนบุคคล
+      </div>
+      <p class="indent-1">
+        บริษัทฯ เก็บรวบรวม ใช้ และเปิดเผย
+        ข้อมูลส่วนบุคคลของท่านตามวัตถุประสงค์ดังต่อไปนี้
+      </p>
+      <ul class="indent-1">
+        <li>
+          เพื่อประโยชน์ในการจัดหาหรือจำหน่ายผลิตภัณฑ์
+          การให้หรือรับบริการในรูปแบบต่าง ๆ
+        </li>
+        <li>
+          เพื่อการจ้างแรงงานการทำธุรกรรมทางการเงิน
+          และภาษีที่เกี่ยวข้องกับการปฏิบัติตามสัญญาของบริษัทฯ
+        </li>
+        <li>การค้นคว้า หรือการวิจัย</li>
+        <li>
+          เพื่อประโยชน์ในการจัดทำฐานข้อมูลสำหรับการวิเคราะห์และนำเสนอบริการหรือผลิตภัณฑ์ใด
+          ๆ ของบริษัทฯ และบริษัทในกลุ่มหรือบุคคลที่เป็นผู้จำหน่าย เป็นตัวแทน
+          หรือมีความเกี่ยวข้องกับบริษัทฯ
+        </li>
+        <li>
+          เพื่อประโยชน์ในการปรับปรุงคุณภาพในการดำเนินงาน การให้บริการ
+          และการดำเนินการที่เกี่ยวข้องกับธุรกิจของบริษัทฯ
+        </li>
+        <li>
+          เพื่อการวิเคราะห์และติดตามการใช้บริการทางเว็บไซต์
+          และวัตถุประสงค์ในการตรวจสอบย้อนหลังในกรณีที่เกิดปัญหาการใช้งาน
+        </li>
+        <li>เพื่อการเข้าร่วมกิจกรรมต่าง ๆ ของบริษัทฯ</li>
+        <li>
+          เพื่อวัตถุประสงค์ในการควบคุมการเข้าถึง
+          การป้องกันและระงับอันตรายต่อชีวิต ร่างกาย
+          หรือสุขภาพของท่านหรือบุคคลอื่น การควบคุมและป้องกันโรคติดต่อ
+          และเพื่อประโยชน์ในการดูแลรักษาความปลอดภัย ของบริเวณอาคาร ภายในอาคาร
+          และพื้นที่ของบริษัทฯ
+        </li>
+        <li>
+          เพื่อปฏิบัติตามกฎหมายหรือกฎระเบียบที่ใช้บังคับกับบริษัทฯ
+          ทั้งในปัจจุบันและในอนาคต
+        </li>
+      </ul>
+      <p class="indent-2">
+        ข้อมูลส่วนบุคคลที่บริษัทฯ
+        ดำเนินการเก็บรวบรวมเพื่อวัตถุประสงค์ข้างต้นเป็นข้อมูลที่จำเป็นในการปฏิบัติตามสัญญา
+        หรือการปฏิบัติตามกฎหมายต่าง ๆ ที่ใช้บังคับ
+        หากท่านไม่ให้ข้อมูลส่วนบุคคลที่จำเป็นดังกล่าว อาจเป็นการฝ่าฝืนกฎหมาย
+        หรือบริษัทฯ อาจไม่สามารถบริการหรือจัดการสัญญา
+        หรืออำนวยความสะดวกในการดำเนินการต่าง ๆ ให้กับท่านได้ ทั้งนี้
+        หากภายหลังมีการเปลี่ยนแปลงวัตถุประสงค์ในการเก็บรวบรวมข้อมูลส่วนบุคคล
+        บริษัทฯ จะแจ้งให้ท่านทราบ และดำเนินการอื่นใดตามที่กฎหมายกำหนด
+        รวมถึงจัดให้มีบันทึกการแก้ไขเพิ่มเติมไว้เป็นหลักฐาน
+      </p>
+
+      <!-- STREAMING_CHUNK:Rendering privacy policy document sections 5 to 8 -->
+      <div class="policy-header">5) ระยะเวลาในการจัดเก็บข้อมูลส่วนบุคคล</div>
+      <p class="indent-1">
+        บริษัทฯ
+        จะเก็บรักษาข้อมูลส่วนบุคคลของท่านเป็นระยะเวลาเท่าที่จำเป็นเพื่อวัตถุประสงค์ในการเก็บรวบรวม
+        ใช้ และเปิดเผยข้อมูลส่วนบุคคลซึ่งได้ระบุไว้ในคำประกาศฉบับนี้
+        ตามหลักเกณฑ์ที่ใช้กำหนดระยะเวลาเก็บ ได้แก่ ระยะเวลาที่บริษัทฯ
+        ยังมีความสัมพันธ์กับท่านในฐานะพนักงานของบริษัทฯ
+        และอาจเก็บต่อไปตามระยะเวลาที่จำเป็นเพื่อการปฏิบัติตามกฎหมาย
+        หรือตามอายุความทางกฎหมาย เพื่อการก่อตั้งสิทธิเรียกร้องตามกฎหมาย
+        การปฏิบัติตามกฎหมายหรือการใช้สิทธิเรียกร้องตามกฎหมาย
+        หรือการยกขึ้นต่อสู้สิทธิเรียกร้องตามกฎหมาย
+        หรือเพื่อเหตุอื่นตามนโยบายและข้อกำหนดภายในของบริษัทฯ
+        ในกรณีที่ไม่สามารถระบุระยะเวลาการเก็บรักษาข้อมูลส่วนบุคคลได้ชัดเจน
+        บริษัทฯ
+        จะเก็บรักษาข้อมูลไว้ตามระยะเวลาที่อาจคาดหมายได้ตามมาตรฐานของการเก็บรวบรวม
+        (เช่น อายุความตามกฎหมายทั่วไปสูงสุด 10 ปี)
+      </p>
+
+      <div class="policy-header">6) การรักษาความมั่นคงปลอดภัย</div>
+      <p class="indent-1">
+        บริษัทฯ กำหนดให้มีมาตรการที่เหมาะสม
+        และเข้มงวดในการรักษาความมั่นคงปลอดภัย
+        ตามนโยบายและแนวปฏิบัติในการรักษาความมั่นคงปลอดภัยด้านเทคโนโลยีสารสนเทศของบริษัทฯ
+        เพื่อป้องกันการสูญหาย การเข้าถึง ทำลาย ใช้ แปลง
+        แก้ไขหรือมิให้มีการนำข้อมูลส่วนบุคคลไปใช้โดยไม่มีสิทธิหรือไม่ชอบด้วยกฎหมาย
+      </p>
+
+      <div class="policy-header">
+        7) สิทธิของท่านในฐานะเจ้าของข้อมูลส่วนบุคคล
+      </div>
+      <p class="indent-1">
+        ในฐานะที่เป็นเจ้าของข้อมูลส่วนบุคคลท่านมีสิทธิตามที่กำหนดไว้โดยพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล
+        พ.ศ. 2562 รวมถึงสิทธิต่าง ๆ ดังนี้
+      </p>
+      <div class="indent-2 space-y-3 mt-4">
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.1) สิทธิในการเพิกถอนความยินยอม</span
+          >
+          <p class="ml-6 mt-1">
+            ท่านมีสิทธิในการเพิกถอนความยินยอมในการประมวลผลข้อมูลส่วนบุคคลที่ท่านได้ให้ความยินยอมกับบริษัทฯ
+            ได้
+            เว้นแต่การเพิกถอนความยินยอมจะมีข้อจำกัดโดยกฎหมายหรือสัญญาที่ให้ประโยชน์แก่ท่านในฐานะที่ท่านเป็นเจ้าของข้อมูล
+            ทั้งนี้
+            การเพิกถอนความยินยอมจะไม่ส่งผลกระทบต่อการประมวลผลข้อมูลส่วนบุคคลที่ท่านได้ให้ความยินยอมไปแล้วโดยชอบด้วยกฎหมาย
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.2) สิทธิในการขอเข้าถึงข้อมูลส่วนบุคคล</span
+          >
+          <p class="ml-6 mt-1">
+            ท่านมีสิทธิขอเข้าถึงและขอรับสำเนาข้อมูลของท่านซึ่งอยู่ในความรับผิดชอบของบริษัทฯ
+            รวมถึงขอให้บริษัทฯ
+            เปิดเผยการได้มาซึ่งข้อมูลดังกล่าวที่ท่านไม่ได้ให้ความยินยอมต่อบริษัทฯ
+            ได้
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.3) สิทธิในการขอให้ส่งหรือโอนข้อมูลส่วนบุคคล</span
+          >
+          <p class="ml-6 mt-1">
+            ท่านมีสิทธิขอให้บริษัทฯ
+            โอนข้อมูลส่วนบุคคลของท่านที่ท่านให้ไว้กับบริษัทฯ
+            ได้ตามที่กฎหมายกำหนด
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.4) สิทธิในการคัดค้านการเก็บรวบรวม ใช้
+            หรือเปิดเผยข้อมูลส่วนบุคคล</span
+          >
+          <p class="ml-6 mt-1">
+            ท่านมีสิทธิในการคัดค้านการประมวลผลข้อมูลที่เกี่ยวกับท่านสำหรับกรณีการเก็บรวบรวม
+            ใช้ หรือเปิดเผยข้อมูลส่วนบุคคลที่เกี่ยวกับตนได้ตามที่กฎหมายกำหนด
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.5) สิทธิในการขอลบข้อมูลส่วนบุคคล</span
+          >
+          <p class="ml-6 mt-1">
+            ท่านมีสิทธิขอให้บริษัทฯ
+            ลบหรือทำลายหรือทำให้ข้อมูลส่วนบุคคลเป็นข้อมูลที่ไม่สามารถระบุตัวตนได้ตามที่กฎหมายกำหนด
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.6) สิทธิในการขอให้ระงับการใช้ข้อมูลส่วนบุคคล</span
+          >
+          <p class="ml-6 mt-1">
+            ท่านมีสิทธิขอให้บริษัทฯ ระงับการใช้ข้อมูลของท่านได้ตามที่กฎหมายกำหนด
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.7) สิทธิในการขอแก้ไขข้อมูลส่วนบุคคลให้ถูกต้อง</span
+          >
+          <p class="ml-6 mt-1">
+            กรณีที่ท่านเห็นว่าข้อมูลที่บริษัทฯ
+            มีอยู่นั้นไม่ถูกต้องหรือท่านมีการเปลี่ยนแปลงข้อมูลส่วนบุคคลของท่านเอง
+            ท่านมีสิทธิขอให้บริษัทฯ
+            แก้ไขข้อมูลส่วนบุคคลของท่านเพื่อให้ข้อมูลส่วนบุคคลดังกล่าวถูกต้อง
+            เป็นปัจจุบัน สมบูรณ์ และไม่ก่อให้เกิดความเข้าใจผิด
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.8)
+            สิทธิในการรับทราบกรณีมีการแก้ไขเปลี่ยนแปลงแบบแจ้งเกี่ยวกับข้อมูลส่วนบุคคลของท่าน</span
+          >
+          <p class="ml-6 mt-1">
+            บริษัทฯ
+            อาจมีการพิจารณาทบทวนและแก้ไขเปลี่ยนแปลงแบบแจ้งนี้ตามความเหมาะสมในบางครั้งเพื่อให้แน่ใจว่าข้อมูลส่วนบุคคลของท่านจะได้รับความคุ้มครองอย่างเหมาะสม
+          </p>
+        </div>
+        <div>
+          <span class="font-medium text-blue-800"
+            >7.9) สิทธิในการร้องเรียน</span
+          >
+          <p class="ml-6 mt-1">
+            ท่านมีสิทธิในการร้องเรียนต่อพนักงานเจ้าหน้าที่ผู้มีอำนาจตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล
+            พ.ศ. 2562 หากบริษัทฯ ฝ่าฝืนหรือไม่ปฏิบัติตามพระราชบัญัติดังกล่าวได้
+            ในกรณีที่เจ้าของข้อมูลส่วนบุคคลยื่นคำร้องขอใช้สิทธิภายใต้บทบัญญัติของพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล
+            พ.ศ. 2562 เมื่อบริษัทฯ ได้รับคำร้องขอดังกล่าวแล้ว
+            จะดำเนินการภายในระยะเวลาที่กฎหมายกำหนด อนึ่ง บริษัทฯ
+            สงวนสิทธิที่จะปฏิเสธหรือไม่ดำเนินการตามคำร้องขอดังกล่าวได้ในกรณีที่กฎหมายกำหนด
+            ในกรณีที่เจ้าของข้อมูลมีข้อจำกัดโดยเลือกที่จะให้ข้อมูลส่วนบุคคลเฉพาะอย่าง
+            อาจส่งผลให้ ไม่สามารถได้รับบริการจากบริษัทฯได้อย่างเต็มที่
+            รวมทั้งบริษัทฯ
+            อาจจะไม่สามารถทำงานร่วมกับเจ้าของข้อมูลส่วนบุคคลหรือให้บริการใด ๆ
+            ได้ หากเจ้าของข้อมูลส่วนบุคคลไม่ยินยอมให้ข้อมูลที่บริษัทฯ ต้องการ
+          </p>
+        </div>
+      </div>
+
+      <div class="policy-header">
+        8) การเปิดเผยข้อมูลส่วนบุคคลกับบุคคลอื่นหรือหน่วยงานอื่น
+      </div>
+      <p class="indent-1">
+        บริษัทฯ อาจมีความจำเป็นในการเปิดเผยข้อมูลส่วนบุคคลให้แก่บริษัทในกลุ่ม
+        หรือบุคคลหรือหน่วยงานอื่นที่เป็นพันธมิตรทางกลยุทธ์ทั้งในประเทศ
+        ซึ่งทำงานร่วมกับบริษัทฯ ในการจัดหาผลิตภัณฑ์และให้บริการในรูปแบบต่าง ๆ
+        หรือตามความจำเป็นตามสมควรในการบังคับใช้ข้อกำหนดและเงื่อนไขของบริษัทฯ
+        หรือกรณีที่มีการปรับโครงสร้างองค์กร การควบรวมบริษัท หรือการขายกิจการ
+        และอาจมีการเปิดเผยข้อมูลส่วนบุคคลให้กับหน่วยงานราชการหรือหน่วยงานภาครัฐตามข้อบังคับของกฎหมายหรือตามคำสั่งศาลหรือตามคำสั่งเจ้าหน้าที่ผู้มีอำนาจ
+        โดยข้อมูลส่วนบุคคลจะได้รับการเก็บรักษาเป็นความลับ
+        ทั้งในรูปเอกสารและข้อมูลอิเล็กทรอนิกส์
+        รวมทั้งในระหว่างการส่งผ่านข้อมูลทุกขั้นตอน ทั้งนี้
+        ในกรณีที่ต้องมีการโอนข้อมูลส่วนบุคคลไปยังต่างประเทศ บริษัทฯ
+        จะดำเนินการตามที่พระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล พ.ศ. 2562
+        กำหนดไว้อย่างเคร่งครัด
+      </p>
+
+      <!-- STREAMING_CHUNK:Rendering privacy policy document sections 9 to 11 and contact details -->
+      <div class="policy-header">9) เจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล</div>
+      <p class="indent-1">
+        บริษัทฯ ได้มีการดำเนินการปฏิบัติตามพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล
+        พ.ศ. 2562 โดยแต่งตั้งเจ้าหน้าที่คุ้มครองข้อมูลส่วนบุคคล (Data Protection
+        Officer : DPO)
+        เพื่อตรวจสอบการดำเนินการของบริษัทที่เกี่ยวกับการเก็บรวบรวม ใช้
+        และเปิดเผยข้อมูลส่วนบุคคลให้สอดคล้องกับพระราชบัญญัติคุ้มครองข้อมูลส่วนบุคคล
+        พ.ศ. 2562 รวมถึงกฎหมายที่เกี่ยวข้องกับการคุ้มครองข้อมูลส่วนบุคคล
+      </p>
+
+      <div class="policy-header">10) วิธีการติดต่อ</div>
+      <p class="indent-1 mb-2">
+        ในกรณีที่มีข้อสงสัยหรือต้องการสอบถามรายละเอียดเพิ่มเติมเกี่ยวกับการคุ้มครองข้อมูลส่วนบุคคลของท่าน
+        โปรดติดต่อบริษัทฯ ได้ตามช่องทางดังต่อไปนี้
+      </p>
+      <div class="indent-2 bg-blue-50 p-4 rounded-xl inline-block mt-2">
+        <p>
+          <span class="font-medium text-blue-800">สถานที่ติดต่อ:</span> บริษัท
+          เอ็น เอส โคลด์ สตอเรจ จำกัด<br />
+          <span class="ml-16"
+            >เลขที่ 150/2 หมู่ที่ 3 ตำบลเขารูปช้าง อำเภอเมือง จังหวัดสงขลา
+            90000</span
+          >
+        </p>
+        <p class="mt-2">
+          <span class="font-medium text-blue-800">เบอร์โทรศัพท์:</span>
+          074-336990-1 หรือ 089-7377236
+        </p>
+      </div>
+
+      <div class="policy-header">
+        11) การเปลี่ยนแปลงนโยบายและแนวปฏิบัติคุ้มครองข้อมูลส่วนบุคคล
+      </div>
+      <p class="indent-1">
+        บริษัทฯ จะทำการพิจารณาทบทวนเงื่อนไขนโยบายบริษัทฯ ฉบับนี้เป็นครั้งคราว
+        เพื่อให้สอดคล้องกับแนวปฏิบัติ และกฎหมายที่เกี่ยวข้อง
+        หากมีการแก้ไขเปลี่ยนแปลง บริษัทฯ
+        จะแจ้งให้ทราบด้วยการเผยแพร่ผ่านการประกาศที่เหมาะสมของบริษัทฯ
+      </p>
+
+      <div
+        class="bg-blue-600 text-white text-center py-4 rounded-2xl mt-16 shadow-md font-medium text-lg"
+      >
+        ทั้งนี้มีผลบังคับใช้ตั้งแต่วันที่ 26 พฤษภาคม 2565 เป็นต้นไป
+      </div>
+    </main>
+
+    <!-- STREAMING_CHUNK:Rendering footer with company details, contacts, and map -->
+    <footer
+      class="bg-gradient-to-b from-[#002255] to-[#001533] text-white pt-16 border-t-4 border-[#005ce6]"
+    >
+      <div class="container mx-auto px-4 max-w-6xl pb-10">
+        <div class="flex flex-col lg:flex-row justify-between pl-0 md:pl-10">
+          <div class="lg:w-3/4 mb-10 lg:mb-0">
+            <h2
+              class="text-2xl md:text-3xl font-medium mb-3 text-white tracking-wide"
+              data-i18n="companyNameTH"
+            >
+              บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด
+            </h2>
+            <p
+              class="text-sm md:text-base mb-6 text-sky-200/90 font-light leading-relaxed"
+              data-i18n="footerDesc"
+            >
+              บริการแช่แข็ง รับฝากเก็บ คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง<br />
+              สินค้าปศุสัตว์แช่แข็ง และผลไม้แช่แข็ง
+            </p>
+
+            <div class="w-full max-w-3xl h-[1px] bg-white/15 mb-8"></div>
+
+            <div class="space-y-4 text-sm font-light text-gray-100">
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5 text-sky-400">
+                  <i class="fas fa-building"></i>
+                </div>
+                <div
+                  class="w-24 flex-shrink-0 font-normal text-sky-200"
+                  data-i18n="addrLabel"
+                >
+                  ที่ตั้งบริษัท
+                </div>
+                <div class="px-2">:</div>
+                <div data-i18n="addrValue">
+                  150/2 หมู่3 ต.เขารูปช้าง อ.เมืองสงขลา จ.สงขลา 90000
+                </div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5 text-sky-400">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div
+                  class="w-24 flex-shrink-0 font-normal text-sky-200"
+                  data-i18n="phoneLabel"
+                >
+                  โทรศัพท์
+                </div>
+                <div class="px-2">:</div>
+                <div>074-336990-1 หรือ 089-7377236</div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5 text-sky-400">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="w-24 flex-shrink-0 font-normal text-sky-200">
+                  อีเมล(Email)
+                </div>
+                <div class="px-2">:</div>
+                <div>mk_nscold@nscold.com</div>
+              </div>
+              <div class="flex items-start">
+                <div class="w-7 flex-shrink-0 mt-0.5">
+                  <div
+                    class="bg-green-500 rounded-full w-[18px] h-[18px] flex items-center justify-center shadow-md"
+                  >
+                    <i class="fab fa-line text-blue-dark text-xs font-bold"></i>
+                  </div>
+                </div>
+                <div class="w-24 flex-shrink-0 font-normal text-sky-200">
+                  ไลน์(Line)
+                </div>
+                <div class="px-2">:</div>
+                <div>0897377236</div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="lg:w-1/4 flex flex-col items-center lg:items-end pr-0 lg:pr-10 mt-8 lg:mt-0"
+          >
+            <!-- ส่วนโลโก้และเฟสบุ๊ค -->
+            <div class="flex items-center space-x-5 mb-5">
+              <img
+                src="{{ url_for('static', filename='images/Logo.png') }}"
+                alt="NS Logo Footer"
+                class="h-16 w-auto object-contain rounded-xl bg-white p-1.5 shadow-md"
+              />
+              <a
+                href="https://www.facebook.com/NSColdStorage"
+                target="_blank"
+                class="w-10 h-10 rounded-full bg-white/10 border border-white/30 flex items-center justify-center hover:bg-blue-600 hover:border-blue-500 cursor-pointer transition-all"
+              >
+                <i class="fab fa-facebook-f text-sm"></i>
+              </a>
+            </div>
+
+            <!-- ส่วนแผนที่ Google Maps -->
+            <div class="w-full max-w-[280px]">
+              <div class="w-full h-[1px] bg-white/15 mb-3"></div>
+              <div
+                class="text-[11px] text-center lg:text-right font-medium tracking-wider mb-2 uppercase text-sky-300"
+              >
+                Location of NS Cold Storage Co.,Ltd.
+              </div>
+              <div
+                class="w-full h-32 rounded-xl overflow-hidden shadow-lg border-2 border-white/20 bg-gray-100"
+              >
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.711779952692!2d100.63093437499828!3d7.159282415448707!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b2cd53013e51c5%3A0xd71f111592c4d6ac!2z4Lia4Lij4Li04Lip4Lix4LiXIOC5gOC4reC5h-C4meC5gOC4reC4quC5guC4hOC4peC4lOC5jOC4quC5guC4leC4o-C5gOC4o-C4iCDguIjguLPguIHguLHguJQ!5e0!3m2!1sth!2sth!4v1790915568904!5m2!1sth!2sth"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                >
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- แถบสีแดง Copyright (2011-2026 พร้อมโลโก้) -->
+      <div class="bg-red-custom py-2">
+        <div
+          class="container mx-auto px-4 flex items-center justify-center space-x-2 text-[10px] md:text-xs text-white"
+        >
+          <span data-i18n="copyright"
+            >Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights
+            Reserved.</span
+          >
+          <img
+            src="{{ url_for('static', filename='images/LogoEdit_.png') }}"
+            alt="NS"
+            class="h-4 md:h-5 opacity-90"
+          />
+        </div>
+      </div>
+    </footer>
+
+    <!-- STREAMING_CHUNK:Adding mobile menu script and multi-language dictionary -->
+    <!-- JavaScript -->
+    <script>
+      // จัดการเมนู Hamburger บนมือถือ
+      document
+        .getElementById("hamburger-btn")
+        .addEventListener("click", function () {
+          const menu = document.getElementById("mobile-menu-container");
+          menu.classList.toggle("show");
+        });
+
+      function toggleMobileMenu(event, menuId, element) {
+        if (window.innerWidth > 768) return;
+        event.preventDefault();
+
+        // ปิดเมนูย่อยอื่นๆ ที่เปิดอยู่
+        const allMenus = document.querySelectorAll(
+          ".dropdown-menu.show, .submenu.show",
+        );
+        allMenus.forEach((m) => {
+          if (m.id !== menuId && !m.contains(document.getElementById(menuId))) {
+            m.classList.remove("show");
+            const icon = m.previousElementSibling?.querySelector(
+              ".mobile-toggle-icon",
+            );
+            if (icon) icon.classList.remove("rotate");
+          }
+        });
+
+        const targetMenu = document.getElementById(menuId);
+        const icon = element.querySelector(".mobile-toggle-icon");
+        if (targetMenu.classList.contains("show")) {
+          targetMenu.classList.remove("show");
+          if (icon) icon.classList.remove("rotate");
+        } else {
+          targetMenu.classList.add("show");
+          if (icon) icon.classList.add("rotate");
+        }
+      }
+
+      /* translations: เก็บข้อความของเว็บไซต์ทั้งภาษาไทย (th) และภาษาอังกฤษ (en) */
+      const translations = {
+        th: {
+          companyNameTH: "บริษัท เอ็น เอส โคลด์ สโตเรจ จำกัด",
+          companyNameEN: "NS COLD STORAGE CO.,LTD.",
+          quickContact: "ติดต่อด่วน",
+          navHome: "หน้าแรก",
+          navServices: "บริการของเรา",
+          srvFreeze: "บริการฟรีส (Freeze)",
+          srvStorage: "บริการรับฝากเก็บสินค้า",
+          srvSorting: "บริการคัดขนาดปลาทูน่า",
+          navDelivery: "บริการส่งมอบสินค้า",
+          subFinishedGoods: "สินค้าสำเร็จรูป",
+          subRawMaterials: "สินค้าวัตถุดิบแช่แข็ง",
+          navAbout: "เกี่ยวกับเรา",
+          aboutScenery: "ทัศนียภาพ",
+          aboutSustainability: "การพัฒนาที่ยั่งยืน",
+          navCareers: "ร่วมงานกับเรา",
+          navContact: "ติดต่อเรา",
+          navActivities: "กิจกรรม",
+          navPrivacy: "นโยบายการคุ้มครองข้อมูลส่วนบุคคล",
+          footerDesc:
+            "บริการแช่แข็ง รับฝากเก็บ คัดขนาดและส่งมอบอาหารทะเลแช่แข็ง<br />สินค้าปศุสัตว์แช่แข็ง และผลไม้แช่แข็ง",
+          addrLabel: "ที่ตั้งบริษัท",
+          addrValue: "150/2 หมู่3 ต.เขารูปช้าง อ.เมืองสงขลา จ.สงขลา 90000",
+          phoneLabel: "โทรศัพท์",
+          copyright:
+            "Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights Reserved.",
+        },
+        en: {
+          companyNameTH: "NS Cold Storage Co., Ltd.",
+          companyNameEN: "NS COLD STORAGE CO.,LTD.",
+          quickContact: "Quick Contacts",
+          navHome: "Home",
+          navServices: "Our Services",
+          srvFreeze: "Freeze Service",
+          srvStorage: "Cold Storage Service",
+          srvSorting: "Tuna Sorting Service",
+          navDelivery: "Delivery Service",
+          subFinishedGoods: "Finished Goods",
+          subRawMaterials: "Frozen Raw Materials",
+          navAbout: "About Us",
+          aboutScenery: "Scenery",
+          aboutSustainability: "Sustainability",
+          navCareers: "Careers",
+          navContact: "Contact Us",
+          navActivities: "Activities",
+          navPrivacy: "Privacy Policy",
+          footerDesc:
+            "Freezing, cold storage, grading, and delivery of frozen seafood, livestock, and fruits.",
+          addrLabel: "Address",
+          addrValue:
+            "150/2 Moo 3, Khao Rup Chang, Mueang Songkhla, Songkhla 90000",
+          phoneLabel: "Phone",
+          copyright:
+            "Copyright © 2011-2026 NS COLD STORAGE CO.,LTD. All Rights Reserved.",
+        },
+      };
+
+      function setLanguage(lang) {
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (translations[lang] && translations[lang][key]) {
+            el.innerHTML = translations[lang][key];
+          }
+        });
+
+        // จัดการสถานะปุ่มเปลี่ยนภาษา (แยก ID ของ Mobile และ Desktop)
+        const btnThDesktop = document.getElementById("btn-th-desktop");
+        const btnEnDesktop = document.getElementById("btn-en-desktop");
+        const btnThMobile = document.getElementById("btn-th-mobile");
+        const btnEnMobile = document.getElementById("btn-en-mobile");
+
+        const activeClassDesktop =
+          "px-4 py-1.5 md:px-3.5 md:py-1 rounded-full bg-blue-custom text-white shadow-sm transition-colors cursor-pointer text-[13px] font-medium";
+        const inactiveClassDesktop =
+          "px-4 py-1.5 md:px-3.5 md:py-1 rounded-full text-gray-500 hover:text-blue-custom transition-colors cursor-pointer text-[13px] font-medium";
+
+        const activeClassMobile =
+          "px-2.5 py-1 rounded-full bg-blue-custom text-white shadow-sm text-xs font-medium";
+        const inactiveClassMobile =
+          "px-2.5 py-1 rounded-full text-gray-500 text-xs font-medium";
+
+        if (lang === "th") {
+          if (btnThDesktop) btnThDesktop.className = activeClassDesktop;
+          if (btnEnDesktop) btnEnDesktop.className = inactiveClassDesktop;
+          if (btnThMobile) btnThMobile.className = activeClassMobile;
+          if (btnEnMobile) btnEnMobile.className = inactiveClassMobile;
+        } else {
+          if (btnEnDesktop) btnEnDesktop.className = activeClassDesktop;
+          if (btnThDesktop) btnThDesktop.className = inactiveClassDesktop;
+          if (btnEnMobile) btnEnMobile.className = activeClassMobile;
+          if (btnThMobile) btnThMobile.className = inactiveClassMobile;
+        }
+      }
+    </script>
+  </body>
+</html>
